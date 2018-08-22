@@ -3,8 +3,8 @@
 ## Course Information
 ### Teaching Team
 Dr. Drew Wham 
-Office: 22c Sheilds Building
-email: fcw5014 [at] psu [dot] edu
+* Office: 22c Sheilds Building
+* email: fcw5014 [at] psu [dot] edu
 
 Office Hours (22c Sheilds Building):
 * Monday 10-11
@@ -12,7 +12,7 @@ Office Hours (22c Sheilds Building):
 * By appointment
 
 Jeffrey Yan
-email: jyan2 [at] alumni [dot] cmu [dot] edu
+* email: jyan2 [at] alumni [dot] cmu [dot] edu
 
 ### Class Time & Location
 Time/Day: Wednesdays and Fridays from 10:10am - 11:00am 
