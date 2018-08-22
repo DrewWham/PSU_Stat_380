@@ -3,8 +3,8 @@
 ## Course Information
 ### Teaching Team
 Dr. Drew Wham 
- Office: 22c Sheilds Building
- email: fcw5014 [at] psu [dot] edu
+<li>Office: 22c Sheilds Building</li>
+<li>email: fcw5014 [at] psu [dot] edu</li>
 
 Office Hours (22c Sheilds Building):
 * Monday 10-11
