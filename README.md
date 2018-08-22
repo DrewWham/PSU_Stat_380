@@ -117,19 +117,26 @@ Some goals and objectives may be reduced or expanded as time permits, but a tent
 * Naming variables
 * Using functions
 * Installing and using contributed packages
-Read & write data files using R
-Data wrangling using R
-“Tidy Data”
-dplyr package
-Generate descriptive statistics using R
-Graphs & Data Visualization
-“Glyph-ready Data”
-mosiac graphics interface
-lattice graphics
-ggplot2 graphics
-Additional topics if time permits
-Shiny framework for web applications
-Special topics
+#### Read & write data files using R
+#### Data wrangling using R
+* “Tidy Data”
+* data.table and dplyr package
+#### Generate descriptive statistics using R
+#### Graphs & Data Visualization
+* ggplot2 graphics
+
+## Policies & Resources
+### ECoS Code of Mutual Respect
+The Eberly College of Science [Code of Mutual Respect and Cooperation](http://science.psu.edu/climate/support-and-resources/code-of-mutual-respect-and-cooperation-pdf) embodies the values that we hope our faculty, staff, and students possess and will endorse to make the Eberly College of Science a place where every individual feels respected and valued, as well as challenged and rewarded.
+
+### Academic Integrity Statement
+Academic dishonesty is not limited to simply cheating on an exam or assignment. The following is quoted directly from the “PSU Faculty Senate Policies for Students” regarding academic integrity and academic dishonesty:
+
+Academic integrity is the pursuit of scholarly activity free from fraud and deception and is an educational objective of this institution. Academic dishonesty includes, but is not limited to, cheating, plagiarizing, fabricating of information or citations, facilitating acts of academic dishonesty by others, having unauthorized possession of examinations, submitting work of another person or work previously used without informing the instructor, or tampering with the academic work of other students.
+All University and Eberly College of Science policies regarding academic integrity/academic dishonesty apply to this course and the students enrolled in this course. Refer to the following URL for further details on the academic integrity policies of the Eberly College of Science: http://www.science.psu.edu/academic/Integrity/index.html. Each student in this course is expected to work entirely on her/his own while taking any exam, to complete assignments on her/his own effort without the assistance of others unless directed otherwise by the instructor, and to abide by University and Eberly College of Science policies about academic integrity and academic dishonesty. Academic dishonesty can result in assignment of “F” by the course instructors or “XF” by Judicial Affairs as the final grade for the student.
+
+### Disability Policy
+Penn State welcomes students with disabilities into the University’s educational programs. If you have a disability-related need for reasonable academic adjustments in this course, contact Student Disability Resources (SDR; formerly ODS) at 814-863-1807, 116 Boucke, http://equity.psu.edu/student-disability-resources. In order to receive consideration for course accommodations, you must contact ODS and provide documentation (see the guidelines at http://equity.psu.edu/student-disability-resources/guidelines).
 
 
 
