@@ -111,7 +111,7 @@ Some goals and objectives may be reduced or expanded as time permits, but a tent
 #### General Tools
 * Become familiar with R programming language
 * Become familiar with RStudio development environment
-* Generate reports and reproducible work with RMarkdown
+* Generate reproducible work 
 * Navigate some basic syntax and idioms in R
 #### Programming style
 * Naming variables
@@ -126,6 +126,9 @@ Some goals and objectives may be reduced or expanded as time permits, but a tent
 * ggplot2 graphics
 
 ## Policies & Resources
+### Working collaboratively
+All quizes and tests must be done individualy without the aid of other students, however many assighnments and in-class activities will be done in groups. Whenever solutions or code is developed in teams the names of all authors should appear on the author line, even when code is submitted individualy. In these cases the principle authors name should appear first followed by all collaborating team members. For this reason, a single persons name may appear on multiple assignments. Turning in an assighnment with an author line that does not reflect the origins of the work is a violation of academic integrity. 
+
 ### ECoS Code of Mutual Respect
 The Eberly College of Science [Code of Mutual Respect and Cooperation](http://science.psu.edu/climate/support-and-resources/code-of-mutual-respect-and-cooperation-pdf) embodies the values that we hope our faculty, staff, and students possess and will endorse to make the Eberly College of Science a place where every individual feels respected and valued, as well as challenged and rewarded.
 
