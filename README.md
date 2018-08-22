@@ -58,23 +58,23 @@ Most issues about classroom activities can be posted to Piazza, but you should u
 ### Grading
 Learning outcomes will be assessed based on performance in each of the following categories accompanied by their impact on the overall grade:
 
-20% Weekly Activities
-15% Semester Project
-30% Exams (Midterm + Final)
-15% Exercises
-10% Reading Quizzes
-10% Participation
+* 20% Weekly Activities
+* 15% Semester Project
+* 30% Exams (Midterm + Final)
+* 15% Exercises
+* 10% Reading Quizzes
+* 10% Participation
 
 Final letter grades will be determined as follows:
-A : 93-100%
-A-: 90-92%
-B+: 87-89%
-B : 83-86%
-B-: 80-82%
-C+: 77-79%
-C : 70-76%
-D : 60-69%
-F : < 60%
+* A : 93-100%
+* A-: 90-92%
+* B+: 87-89%
+* B : 83-86%
+* B-: 80-82%
+* C+: 77-79%
+* C : 70-76%
+* D : 60-69%
+* F : < 60%
 
 ### Semester Project
 
