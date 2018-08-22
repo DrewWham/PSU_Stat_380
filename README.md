@@ -58,10 +58,11 @@ Most issues about classroom activities can be posted to Piazza, but you should u
 ### Grading
 Learning outcomes will be assessed based on performance in each of the following categories accompanied by their impact on the overall grade:
 
-30% Semester Project
-30% In-class Assignments
-15% Reading Quizzes
-15% Homework
+20% Weekly Activities
+15% Semester Project
+30% Exams (Midterm + Final)
+15% Exercises
+10% Reading Quizzes
 10% Participation
 
 Final letter grades will be determined as follows:
