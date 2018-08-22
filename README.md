@@ -2,7 +2,7 @@
 
 ## Course Information
 ### Teaching Team
-Dr. Drew Wham 
+#### Dr. Drew Wham 
     Office: 22c Sheilds Building
     email: fcw5014 [at] psu [dot] edu
 
