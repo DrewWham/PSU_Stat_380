@@ -11,7 +11,7 @@
     By appointment
 
 #### Jeffrey Yan
-    email: jyan2 [at] alumni [dot] cmu [dot] edu
+    email: jzy5197 [at] psu [dot] edu
 
 ### Class Time & Location
 Time/Day: Wednesdays and Fridays from 10:10am - 11:00am 
