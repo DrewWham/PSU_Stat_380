@@ -4,12 +4,8 @@ Follow the below links download and install the appropriate version of R and R S
 * [R](https://www.r-project.org)
 * [RStudio](https://www.rstudio.com/products/RStudio/)
 
-### 2)Download the files in this repository to your desktop 
-Download the workshop files by clicking the green "clone or download" button and then click "Download ZIP". Move the resulting folder to your desktop.
-
-### 3)Download the workshop data
-Download the data we will use in the workshop from the below link. The resulting file should be a compressed "2008.csv.bz2" file. Uncompress the file and move the file into the R_Workshop folder on your desktop. Once it is uncompressed you should have a 689.4mb file named "2008.csv" in R_Workshop folder. 
-* [2008 Flight Data](http://stat-computing.org/dataexpo/2009/2008.csv.bz2)
+### 2)Make a working directory and download all of the files we will use in class
+Make a new folder on your desktop called "Stat_184". Make a sepeate folder for the Flights, PUBG and Yelp datasets and then download the datasets from the (datasets page)[https://github.com/DrewWham/PSU_Stat_184/wiki/Data-Sets]
 
 ## Opening R, setting working directory, Base R, downloading & loading packages
 * [Base R - Cheatsheet](http://github.com/rstudio/cheatsheets/raw/master/base-r.pdf)
@@ -17,7 +13,7 @@ Download the data we will use in the workshop from the below link. The resulting
 
 R has a "working drectory" which is the folder where R will load data from and write files out to; You will need to set the working directory in the R GUI, the R-Studio GUI or by writing in the command line: 
 
-`setwd("~/Desktop/R_Workshop")`
+`setwd("~/Desktop/Stat_184")`
 
 The utility of R is in the hundereds of packages which offer thousands of pre-made functions. Packages will need to be installed; you can install them in the R GUI, the R-Studio GUI or by writing in the command line:
 
@@ -27,9 +23,9 @@ Once packages are installed you will still need to load them in order to use the
 
 `library(data.table)`
 
-This workshop will leverage functions from several packages, you can install and load all of them with the following command:
+This course will leverage functions from several packages, you can install and load all of them with the following command:
 
-`source("Workshop_Packages.R")`
+`source("course_packages.R")`
 
 ## Data Structures,Loading Data, Indexing & Functions
 
