@@ -1,12 +1,11 @@
- ### Reshaping and Aggregation
-
+ ### Subsetting
 there are several ways to subset
 
 select all rows with vlaue 'IAD' as 'Origin'
 
 `sub_IAD<-DT[Origin=='IAD',]`
 
-subset with a vector is also very useful
+subsetting with a vector is also very useful
 make a vector with all of the washington area airports
 `WashAP<-c('DCA','IAD','BWI')`
 
@@ -15,6 +14,7 @@ make a vector with all of the washington area airports
 `dim(WF)`
 
 `WF<-WF[Cancelled==0]`
+ ### Reshaping and Aggregation
 
 Reshaping and aggregating are two of the most important functions you will use in data wrangling
 We will use two methods:
