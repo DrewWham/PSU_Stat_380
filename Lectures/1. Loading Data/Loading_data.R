@@ -13,6 +13,8 @@ setwd("/Users/few5014/Desktop/Stat_184/Flights")
 
 #this is also a vector
 Vec <- 7
+#number vector
+num_Vec<-c(3,6,5,1)
 #this is a vector of logical statements
 Log_Vec <- c(TRUE,TRUE,FALSE,TRUE)
 #this is a character vector
