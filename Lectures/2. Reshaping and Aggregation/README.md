@@ -25,18 +25,25 @@ This weeks [reading on the reshape2 package](https://seananderson.ca/2013/10/19/
 We will begin with two methods:
 
 data.table has built in aggregation function
+
 `WF[,.(Avg_Delay=mean(DepDelay)),by=Origin]`
 
 dcast offeres a larger set of reshaping options 
+
 `Avg_Delay_tab<-dcast(WF,Origin ~ .,mean,value.var= c("DepDelay"))`
+
 dcast allows you to define multiple groupings
+
 `Avg_Delay_tab<-dcast(WF,Origin ~ UniqueCarrier,mean,value.var= c("DepDelay"))`
 
 this is the same information in tidy format
+
 `Avg_Delay_tab<-dcast(WF,Origin + UniqueCarrier~.,mean,value.var= c("DepDelay"))`
 
 rename the '.' column
+
 `setnames(Avg_Delay_tab,".","Average_Delay")`
 
 write out the resulting table
+
 `fwrite(Avg_Delay_tab,"Avg_Delay_tab.csv")`
