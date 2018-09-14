@@ -19,6 +19,7 @@ make a vector with all of the washington area airports
  ### Reshaping and Aggregation
 
 Reshaping and aggregating are two of the most important functions you will use in data wrangling
+
 This weeks [reading on the reshape2 package](https://seananderson.ca/2013/10/19/reshape/) discusses the various ways you might need to reshape data.
 
 We will begin with two methods:
@@ -36,5 +37,6 @@ this is the same information in tidy format
 
 rename the '.' column
 `setnames(Avg_Delay_tab,".","Average_Delay")`
+
 write out the resulting table
 `fwrite(Avg_Delay_tab,"Avg_Delay_tab.csv")`
