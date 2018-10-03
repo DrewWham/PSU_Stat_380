@@ -1,5 +1,6 @@
 library(data.table)
 library(reshape2)
+library(ggplot2)
 #set working directory
 
 setwd("/Users/few5014/Desktop/Stat_184/Flights")
