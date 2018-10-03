@@ -29,7 +29,7 @@ setnames(Delay_Count,"variable","Delay_Type")
 
 
 #get the total number of flights for each airport
-AP_flight_count<-[,.N,by=Origin]
+AP_flight_count<-DT[,.N,by=Origin]
 
 #merge the total number of flights to the counts of each type of delay
 Delay_Count<-merge(Delay_Count,AP_flight_count,all.x=T)
