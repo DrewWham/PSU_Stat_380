@@ -51,3 +51,20 @@ ggplot(Delay_Count[Delay_Type=="CarrierDelay",],aes(x=log(N)))+geom_histogram(bi
 
 #log transform the x axis
 ggplot(Delay_Count[Delay_Type=="CarrierDelay",],aes(x=log(N),y=Delay_freq))+geom_point()
+
+#plot all the delay types in facets
+ggplot(Delay_Count,aes(x=log(N),y=Delay_freq,col=Delay_Type))+geom_point()+facet_grid(.~Delay_Type)
+
+#add a title
+ggplot(Delay_Count,aes(x=log(N),y=Delay_freq,col=Delay_Type))+geom_point()+facet_grid(.~Delay_Type)+ggtitle("Flight Delay Frequency by Airport Size")
+
+#adjust title to center
+ggplot(Delay_Count,aes(x=log(N),y=Delay_freq,col=Delay_Type))+geom_point()+facet_grid(.~Delay_Type)+ggtitle("Flight Delay Frequency by Airport Size")+theme(plot.title = element_text(hjust = 0.5))
+
+#change x and y axis names
+ggplot(Delay_Count,aes(x=log(N),y=Delay_freq,col=Delay_Type))+geom_point()+facet_grid(.~Delay_Type)+ggtitle("Flight Delay Frequency by Airport Size")+theme(plot.title = element_text(hjust = 0.5))+xlab("Log Number of Flights per Year")+ylab("Frequency of Delay")
+
+
+
+
+
