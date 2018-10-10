@@ -1,7 +1,7 @@
 library(data.table)
 library(reshape2)
 library(ggplot2)
-library(geoshere)
+library(geosphere)
 
 #download data to your local computer
 download.file(url="https://s3.amazonaws.com/stat.184.data/BikeShare/Trips.csv",destfile='Trips.csv', method='curl')
