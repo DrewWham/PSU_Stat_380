@@ -25,6 +25,6 @@ Trips<-fread("Trips.csv")
 #that gives the distance between the start and end points of every trip. I have provided an example of 
 #one way to set up the arguments for distm below
 
-distm(Trips[,c(slon,slat)], Trips[,c(elon,elat)], fun = distHaversine)
+distHaversine(Trips[,c('slon','slat')], Trips[,c('elon','elat')])
 
 #make a density plot with geom_dist for the frequency of trips across every distance observed in the dataset
