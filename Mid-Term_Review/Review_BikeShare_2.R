@@ -40,7 +40,7 @@ Trips$distance<-distHaversine(Trips[,c('slon','slat')], Trips[,c('elon','elat')]
 
 #on average, do casual or registered clients travel further?
 
-#From which station on average do clients travel the fartest from?
+#From which station on average do clients travel the farthest from?
 
 #Frequently clients rent and return bikes from the same station. What station has the highest total number of rent and returns to the same location?
 
