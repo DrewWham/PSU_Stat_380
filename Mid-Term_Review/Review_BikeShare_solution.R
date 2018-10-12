@@ -27,8 +27,7 @@ str(Stations)
 setnames(Stations,c("name","lat","long"),c("sstation","slat","slon"))
 Trips<-merge(Trips,Stations[,c('sstation','slat','slon')],all.x=T)
 setnames(Stations,c("sstation","slat","slon"),c("estation","elat","elon"))
-Trips<-merge(Trips,Stations[,c('estation','elat','elon')],all.x=T)
- Trips<-merge(Trips,Stations[,c('estation','elat','elon')],by="estation",all.x=T)
+Trips<-merge(Trips,Stations[,c('estation','elat','elon')],by="estation",all.x=T)
 
 
 
