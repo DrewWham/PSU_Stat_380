@@ -38,11 +38,12 @@ Trips<-merge(Trips,Stations[,c('estation','elat','elon')],by="estation",all.x=T)
 
 Trips$distance<-distHaversine(Trips[,c('slon','slat')], Trips[,c('elon','elat')])
 
-#on average, do casual or registered clients travel further?
+#on average, do casual or registered clients travel farther?
 
 #From which station on average do clients travel the farthest from?
 
-#Frequently clients rent and return bikes from the same station. What station has the highest total number of rent and returns to the same location?
+#Frequently clients rent and return bikes from the same station. What station has the highest frequency of self-returns for 
+#its rentals?
 
 #Plot the relationship between the number of rentals per station vs the number of docks at a station 
 #Hint: The Stations data represents a snapshot in time, you will need to derive the number of docks from the
