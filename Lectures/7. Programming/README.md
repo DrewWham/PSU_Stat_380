@@ -1,7 +1,7 @@
- ### Intro to ggplot
+ ### Intro to Programming in R
  
- Reading: R for Data Science Chapter 1
+ Reading: R for Data Science Chapter 15
  
- (ggplot2-cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
+ 
  
  
