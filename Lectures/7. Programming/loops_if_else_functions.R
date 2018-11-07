@@ -2,6 +2,7 @@ library(data.table)
 library(rvest)
 library(reshape2)
 library(ggplot2)
+library(jsonlite)
 
 #for loop
 series<-NULL
