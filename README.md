@@ -6,19 +6,24 @@
     Office: 22c Sheilds Building
     email: fcw5014 [at] psu [dot] edu
     Office Hours (22c Sheilds Building):
-    Monday 10-11
-    Friday 11-12
+    Wed 12-1
+    Friday 12-1
     By appointment
 
-#### Jeffrey Yan
-    email: jzy5197 [at] psu [dot] edu
+#### Zheye Yuan
+    email: zxy124 [at] psu [dot] edu
 
 ### Class Time & Location
+Section 1:  
 Time/Day: Wednesdays and Fridays from 10:10am - 11:00am 
+Location: 108 Chambers Bldg
+
+Section 2:  
+Time/Day: Wednesdays and Fridays from 11:15am - 12:05am 
 Location: 101 Althouse Lab
 
 ### Laptops 
-Laptops: Bring a laptop to class each day if you have one. I encourage students to work collaboratively, so I’d like to have at least one laptop for every 2 or 3 students.
+Laptops: Bring a laptop to class each day if you have one. Please let me know if you do not have a personal laptop.
 
 ## Resources
 ### Textbooks
@@ -57,12 +62,11 @@ Most issues about classroom activities can be posted to Piazza, but you should u
 ### Grading
 Learning outcomes will be assessed based on performance in each of the following categories accompanied by their impact on the overall grade:
 
-* 20% Weekly Activities
+* 40% Weekly Activities
 * 15% Semester Project
-* 30% Exams (Midterm + Final)
-* 15% Exercises
+* 35% Exams (Midterm + Final)
 * 10% Reading Quizzes
-* 10% Participation
+
 
 Final letter grades will be determined as follows:
 * A : 93-100%
@@ -85,13 +89,7 @@ Weekly in-class assignments may include an activity or a quiz assigned and compl
 
 ### Reading Quizzes
 
-Weekly reading quizzes will be due before class in order to assess comprehension of the reading assignment that will be discussed each week. This allows students to see new content and concepts for the first time at their own pace in order to more effectively use class time to emphasize main points, clear up confusion, etc. The goal of the reading quiz is to hold students accountable for completing the reading each week before class.
-
-### Participation
-
-Participation is graded based on Piazza participation and attendance. In order to earn full credit for the Piazza portion, each student should make 2 or more substantive posts per week related to the content of the course; at least one post each week should be a reply to another student’s post. You may still post anonymously if you wish; grading will utilize Piazza meta-data that can be accessed only by an instructor.
-
-Since our class only meets once each week, attendance is very important. Moreover, students will be encouraged to work in teams on in-class assignments, so others are counting on you to be in class each week. Students with University excused absences (e.g. athletics) should notify the instructor as soon as possible and provide a minimum of one week notice.
+Reading quizzes will be due before class in order to assess comprehension of the reading assignment that will be discussed each week. This allows students to see new content and concepts for the first time at their own pace in order to more effectively use class time to emphasize main points, clear up confusion, etc. The goal of the reading quiz is to hold students accountable for completing the reading each week before class.
 
 ### Homework
 
@@ -102,7 +100,7 @@ Weekly homework assignments will be due before class in order to assess understa
 
 The official course description is available in Penn State’s University Bulletin [linked here](http://undergraduate.bulletins.psu.edu/search/?scontext=courses&search=stat+184), but a recent version is reproduced below for your convenience.
 
-STAT 184 Introduction to R: R is a powerful, open-source programming language used widely for statistical analyses. It is easily extendible, and thousands of user-created packages are publicly available to extend its capabilities. This course will introduce R syntax: Students will be asked to utilize various descriptive and graphical statistical techniques for various types of datasets. These datasets will primarily be drawn from those that are readily available for R; emphasis will not be on obtaining nor cleaning raw data in this course. Furthermore, this course focus on descriptive statistics and graphical summary techniques rather than inferential statistical techniques. In particular, no statistical background will be assumed. In addition to being asked to write well-documented code for functions in R, students will be exposed to development environments (e.g., the open-source RStudio environment) and the Shiny framework for web applications.
+STAT 184 Introduction to R: R is a powerful, open-source programming language used widely for statistical analyses. It is easily extendible, and thousands of user-created packages are publicly available to extend its capabilities. This course will introduce R syntax: Students will be asked to utilize various descriptive and graphical statistical techniques for various types of datasets. These datasets will primarily be drawn from those that are readily available for R. Furthermore, this course focus on descriptive statistics and graphical summary techniques rather than inferential statistical techniques. In particular, no statistical background will be assumed. In addition to being asked to write well-documented code for functions in R, students will be exposed to development environments (e.g., the open-source RStudio environment).
 
 ### Goals and objectives
 
