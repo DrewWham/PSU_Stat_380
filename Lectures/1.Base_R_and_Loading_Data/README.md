@@ -4,14 +4,11 @@ Follow the below links download and install the appropriate version of R and R S
 * [R](https://www.r-project.org)
 * [RStudio](https://www.rstudio.com/products/RStudio/)
 
-### 2)Make a working directory and download all of the files we will use in class
-Make a new folder on your desktop called "Stat_184". Make a sepeate folder for the Flights, PUBG and Yelp datasets and then download the datasets from the (datasets page)[https://github.com/DrewWham/PSU_Stat_184/wiki/Data-Sets]
-
 ## Opening R, setting working directory, Base R, downloading & loading packages
 * [Base R - Cheatsheet](http://github.com/rstudio/cheatsheets/raw/master/base-r.pdf)
 * [R Studio - Cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf)
 
-R has a "working drectory" which is the folder where R will load data from and write files out to; You will need to set the working directory in the R GUI, the R-Studio GUI or by writing in the command line: 
+R has a "working drectory" which is the folder where R will load data from and write files out to; You will need to set the working directory in the R GUI, the R-Studio GUI or by writing in the command line:
 
 `setwd("~/Desktop/Stat_184")`
 
@@ -45,9 +42,9 @@ R has some basic data structures we will primarily use just two, vectors and dat
 
 Indexing allows you to retrieve values or subset a data_table
 
-`DT1[1,]` #returns the first row, notice that this is a data_table 
+`DT1[1,]` #returns the first row, notice that this is a data_table
 
-`DT1[,V2]` #returns the column named "V2", notice that this is a vector 
+`DT1[,V2]` #returns the column named "V2", notice that this is a vector
 
 ".csv" files are a common way to store data, we can load ".csv" files with the fread() function:
 
