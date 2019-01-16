@@ -1,17 +1,13 @@
 #load libraries
-library(ggplot2)
-library(dplyr)
 library(reshape2)
-library(stringr)
-library(lubridate)
 library(data.table)
 
-#set working directory
-setwd("/Users/few5014/Desktop/Stat_184/Flights")
+# set your working directory to the PSU_Stat_184 directory, this is my location but you may have your directory in another location
+
+#setwd("~/Desktop/PSU_Stat_184")
 
 
-
-#this is also a vector
+#this is a vector
 Vec <- 7
 #number vector
 num_Vec<-c(3,6,5,1)
@@ -32,15 +28,17 @@ DT1[1,]
 DT1[,V2]
 
 #".csv" files are a common way to store data, we can load ".csv" files with the fread() function:
+# first, you will need to download the flights data
+source("./Lectures/Data/download_flights.R")
 
 #This reads in the flight data and stores it as an object called 'DT'
-DT<-fread("2008.csv")
+DT<-fread("./Lectures/Data/Flights/2008.csv")
 #This reads in the data about airports and stores it as an object called 'AP'
-AP<-fread("airports.csv")
+AP<-fread("./Lectures/Data/Flights/airports.csv")
 #sometimes data files are large and you might want to just load a subset to investigate
 #use the 'nrows' argument to bring a few rows in
 
-DT_subset<-fread("2008.csv",nrows=100)
+DT_subset<-fread("./Lectures/Data/Flights/2008.csv",nrows=100)
 
 #We can now look at the data with some useful functions
 
@@ -60,12 +58,14 @@ tail(DT)
 str(DT)
 
 #we can write out data with the fwrite command
-fwrite(DT_subset, "subset_2008.csv")
+fwrite(DT_subset, "./Lectures/Data/Flights/subset_2008.csv")
 
 
 
 
+# you homework is to run this to get all of the data for this class, it will take some time to download all of the data
 
+source("./Lectures/Data/download_data.R")
 
 
 

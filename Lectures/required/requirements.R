@@ -1,0 +1,7 @@
+install.packages("data.table",repos= "http://lib.stat.cmu.edu/R/CRAN/")
+install.packages("ggplot2",repos= "http://lib.stat.cmu.edu/R/CRAN/")
+install.packages("optparse",repos= "http://lib.stat.cmu.edu/R/CRAN/")
+install.packages("stringr",repos= "http://lib.stat.cmu.edu/R/CRAN/")
+install.packages("lubridate",repos= "http://lib.stat.cmu.edu/R/CRAN/")
+install.packages("rvest",repos= "http://lib.stat.cmu.edu/R/CRAN/")
+install.packages("jsonlite",repos= "http://lib.stat.cmu.edu/R/CRAN/")
