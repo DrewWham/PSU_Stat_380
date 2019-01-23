@@ -4,6 +4,8 @@ library(reshape2)
 library(ggplot2)
 library(jsonlite)
 
+# Additional reading can be found in "R for Data Science" Chapter 15. Future work will assume you have done this reading. 
+
 #for loop
 series<-NULL
 for (i in 1:50){
