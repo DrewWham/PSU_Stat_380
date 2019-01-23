@@ -7,27 +7,28 @@ library(jsonlite)
 # Additional reading can be found in "R for Data Science" Chapter 15. Future work will assume you have done this reading. 
 
 #for loop
-series<-NULL
+out_vector<-NULL
 for (i in 1:50){
-	k<-2^i	
-	series<-c(series,k)	
+	new_value<-2^i	
+	out_vector<-c(out_vector,new_value)	
 }
 
-
+out_vector
 
 
 
 #while loop
-series<-NULL
+out_vector<-NULL
 sec<-0
 start<-Sys.time()
 while (sec < 30){
 	i<-i+1
-	k<-2^i	
-	series<-c(series,k)	
+	new_value<-2^i	
+	out_vector<-c(out_vector,new_value)	
 	sec<-Sys.time()-start
 }
 
+length(out_vector)
 
 
 #if else statement
@@ -51,33 +52,39 @@ for (i in 1:length(rand_samp)){
 	
 }
 
+rand_samp
+cumulative_avg
 
+length(rand_samp)
+length(cumulative_avg)
 
 #function
 
 coin_flips<-function(n){
 	rand_samp<-sample(c(1,0),n,replace=T)
 	freq<-mean(rand_samp)
-	freq
+	return(freq)
 }
 
 
 
 #nested for loops and a plot
-DT<-NULL
-n<-1000
-samp_sizes<-c(5,10,50,100,1000)
+out_DT<-NULL
+n<-5000
+samp_sizes<-c(5,10,50,100,1000,10000)
 for(i in 1:length(samp_sizes)){
-	jDT<-NULL
+	j_DT<-NULL
 	for(j in 1:n){
 		freq<-coin_flips(samp_sizes[i])
 		result<-data.table(sample_size=samp_sizes[i],frequency=freq)
-		jDT<-rbind(jDT,result)
+		j_DT<-rbind(j_DT,result)
 	}
-DT<-rbind(DT,jDT)
+out_DT<-rbind(out_DT,j_DT)
 }
 
-ggplot(DT,aes(x=frequency,col=as.factor(sample_size)))+geom_density()
+head(out_DT)
+
+ggplot(out_DT,aes(x=frequency,col=as.factor(sample_size)))+geom_density()
 
 
 #a classroom exercise and a challange:
