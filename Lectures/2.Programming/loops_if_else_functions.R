@@ -29,21 +29,22 @@ while (sec < 30){
 
 
 #if else statement
+total<-10
 set<-c(0,NA,1)
-rand_samp<-sample(set,10,replace=T)
+rand_samp<-sample(set,total,replace=T)
 
-series<-NULL
+cumulative_avg<-NULL
 j<-NULL
 for (i in 1:length(rand_samp)){
 
 	
 	if (is.na(rand_samp[i])){
 		j<-j
-		series<-series
+		cumulative_avg<-cumulative_avg
 	}
 	else {
 	j<-c(j,rand_samp[i])
-	series<-c(series,sum(j)/i)	
+	cumulative_avg<-c(cumulative_avg,sum(j)/length(j))	
 	}
 	
 }
@@ -62,22 +63,19 @@ coin_flips<-function(n){
 
 #nested for loops and a plot
 DT<-NULL
-for(i in 1:10000){
-
-	samp_sizes<-c(5,10,50,100,1000)
-	series<-NULL
-	for(j in 1:length(samp_sizes)){
-		freq<-coin_flips(samp_sizes[j])
-		series<-c(series,freq)
+n<-1000
+samp_sizes<-c(5,10,50,100,1000)
+for(i in 1:length(samp_sizes)){
+	jDT<-NULL
+	for(j in 1:n){
+		freq<-coin_flips(samp_sizes[i])
+		result<-data.table(sample_size=samp_sizes[i],frequency=freq)
+		jDT<-rbind(jDT,result)
 	}
-
-DT<-rbind(DT,series)
+DT<-rbind(DT,jDT)
 }
 
-DT<-data.table(DT)
-setnames(DT,c("V1","V2","V3","V4","V5"),c("samp_5","samp_10","samp_50","samp_100","samp_1000"))
-m_DT<-melt(DT,measure=names(DT))
-ggplot(m_DT,aes(x=value,col=variable))+geom_density()
+ggplot(DT,aes(x=frequency,col=as.factor(sample_size)))+geom_density()
 
 
 #a classroom exercise and a challange:
