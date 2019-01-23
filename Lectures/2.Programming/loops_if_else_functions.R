@@ -88,8 +88,8 @@ read_json(url)[[1]]
 }
 
 #as a challange i have set up another binary code that is 256 units long. I will give you a 100% on your lowest homework
-#if you break it. I will also give a lettergrade on the final to the student that breaks it in the lowest number of submissions
-#be careful to listen to the rules given in class and in the assignment email.
+#if you break it. I will also give a lettergrade on the final to the student that breaks it in the lowest number of total submissions
+#be careful to listen to the rules given in class.
 submitCode256<-function(user_id,x){
 url <- paste0("https://dsdemo.vmhost.psu.edu/api/nlp/CodeBreak_256?user_id=",user_id,"&x=",x)
 read_json(url)[[1]]
