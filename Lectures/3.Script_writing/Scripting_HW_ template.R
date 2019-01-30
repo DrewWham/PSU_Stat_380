@@ -24,7 +24,13 @@ read_json(url)[[1]]
 # your main script
 
 
-# Homework this week: Make a working script that will solve the 256-code API in less than 512 submissions, it should report out to the user the current number of submissions and the current number correct. It should run from the command line and take in a user_id as an argument. Note that you will not learn how to make a script for the command line until friday. You can however start working on this by getting your code to run as this one does from within R using the source() function. 
+# Homework this week: Make a working script that will solve the 256-code API
+# in less than 512 submissions, it should report out to the user the current 
+# number of submissions and the current number correct. It should run from the
+# command line and take in a user_id as an argument. Note that you will not 
+# learn how to make a script for the command line until friday. You can however
+# start working on this by getting your code to run like todays lecture does 
+# from within R using the source() function. 
 
 
 
