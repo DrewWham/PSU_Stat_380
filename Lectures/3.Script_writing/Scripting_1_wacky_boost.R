@@ -45,7 +45,7 @@ string_vote<-function(binary_strings){
 getAboveAvg<-function(user_id){
     code<-rand_code()
     eval<-submitCode256(user_id,code)[[1]]
-    
+
     # make sure it wasnt the password (this will never happen)
     if (is.character(eval)){
         eval<-1
@@ -64,29 +64,22 @@ getAboveAvg<-function(user_id){
 ##main##
 ########
 
-
-DT<-NULL
-eval<-0
-i=0
-while(!is.character(eval)){
-    # make a bunch of above average strings then ensamble them
-    i<-i+1
-    out<-getAboveAvg(user_id)
-    DT<-rbind(DT,out)
-    ensamble_code<-string_vote(c(DT$code))
-    eval<-submitCode(user_id,ensamble_code)[[1]]
-    message(paste0("ensambled strings: ",i,"             percent correct: ",eval))
+wacky_boost<-function(user_id){
+	DT<-NULL
+	eval<-0
+	i=0
+	while(!is.character(eval)){
+    	# make a bunch of above average strings then ensamble them
+    	i<-i+1
+    	out<-getAboveAvg(user_id)
+    	DT<-rbind(DT,out)
+    	ensamble_code<-string_vote(c(DT$code))
+    	eval<-submitCode(user_id,ensamble_code)[[1]]
+    	message(paste0("ensambled strings: ",i,"             percent correct: ",eval))
+	}
+	ensamble_code<-string_vote(c(DT$code))
+	out<-submitCode(user_id,ensamble_code)[[1]]
+	return(out)
 }
 
-
-ensamble_code<-string_vote(c(DT$code))
-submitCode(user_id,ensamble_code)[[1]]
-
-
-
-# Homework this week: Make a working script that will solve the 256-code API in less than 512 submissions, it should report out to the user the current number of submissions and the current number correct. It should run from the command line and take in a user_id as an argument. Note that you have not learned how to make a script for the command line yet, we will discuss this friday. You can however start working on this by getting your code to run as this one does from within R using the source() function. 
-
-
-
-
-
+wacky_boost(user_id)
