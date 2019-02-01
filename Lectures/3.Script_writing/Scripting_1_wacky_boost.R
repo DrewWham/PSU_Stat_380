@@ -74,11 +74,11 @@ wacky_boost<-function(user_id){
     	out<-getAboveAvg(user_id)
     	DT<-rbind(DT,out)
     	ensamble_code<-string_vote(c(DT$code))
-    	eval<-submitCode(user_id,ensamble_code)[[1]]
+    	eval<-submitCode256(user_id,ensamble_code)[[1]]
     	message(paste0("ensambled strings: ",i,"             percent correct: ",eval))
 	}
 	ensamble_code<-string_vote(c(DT$code))
-	out<-submitCode(user_id,ensamble_code)[[1]]
+	out<-submitCode256(user_id,ensamble_code)[[1]]
 	return(out)
 }
 
