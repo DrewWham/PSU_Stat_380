@@ -1,8 +1,8 @@
 #load libraries
 library(data.table)
 library(reshape2)
-#set working directory
-setwd("/Users/few5014/Desktop/Stat_184/Flights")
+
+
 
 #This reads in the flight data and stores it as an object called 'DT'
 DT<-fread("2008.csv")
