@@ -8,9 +8,9 @@ library(data.table)
 
 
 #This reads in the flight data and stores it as an object called 'DT'
-DT<-fread("./Data/2008.csv")
+DT<-fread("./Lectures/Data/Flights/2008.csv")
 #This reads in the data about airports and stores it as an object called 'AP'
-AP<-fread("./Data/airports.csv")
+AP<-fread("./Lectures/Data/Flights/airports.csv")
 
 #there are several ways to subset
 
