@@ -27,4 +27,4 @@ Trips<-fread("Trips.csv")
 
 distHaversine(Trips[,c('slon','slat')], Trips[,c('elon','elat')])
 
-#make a density plot with geom_dist for the frequency of trips across every distance observed in the dataset
+#What is the average distance between the start and end point of rentals?
