@@ -49,7 +49,7 @@ Trips$distance<-distHaversine(Trips[,c('slon','slat')], Trips[,c('elon','elat')]
 #Hint: The Stations data represents a snapshot in time, you will need to derive the number of docks from the
 #information available. 
 
-#Plot the distribution of distance traveled for bikes during the time period of data collection. 
-#Hint: use geom_density()
+#What is the average distance traveled for bikes during the time period of data collection? 
+
 
 
