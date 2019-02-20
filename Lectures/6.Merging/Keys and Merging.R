@@ -39,7 +39,7 @@ setkey(Avg_DepDelay, Origin)
 setkey(Avg_Dist, Origin)
 setkey(Avg_TaxTime, Origin)
 
-#do the merging
+#merge
 
 Airport_stats<-merge(Avg_DepDelay,AP,all.x=T)
 Airport_stats<-merge(Airport_stats,Avg_Dist,all.x=T)
