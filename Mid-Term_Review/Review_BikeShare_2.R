@@ -25,9 +25,9 @@ str(Stations)
 #using the merge function, make new columns in the trip dataset that give the lat and lon of both the 
 #start and end station. Use setnames to chang columns names where necessary
 setnames(Stations,c("name","lat","long"),c("sstation","slat","slon"))
-Trips<-merge(Trips,Stations[,c('sstation','slat','slon')],all.x=T)
+Trips<-merge(Trips,Stations[,.(sstation,slat,slon)],all.x=T)
 setnames(Stations,c("sstation","slat","slon"),c("estation","elat","elon"))
-Trips<-merge(Trips,Stations[,c('estation','elat','elon')],by="estation",all.x=T)
+Trips<-merge(Trips,Stations[,.(estation,elat,elon)],by="estation",all.x=T)
 
 
 
@@ -36,7 +36,7 @@ Trips<-merge(Trips,Stations[,c('estation','elat','elon')],by="estation",all.x=T)
 #one way to set up the arguments for distm below
 
 
-Trips$distance<-distHaversine(Trips[,c('slon','slat')], Trips[,c('elon','elat')])
+Trips$distance<-distHaversine(Trips[,.(slon,slat)], Trips[,.(elon,elat)])
 
 #on average, do casual or registered clients travel farther?
 
