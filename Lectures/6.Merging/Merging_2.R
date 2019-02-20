@@ -1,12 +1,10 @@
 library(data.table)
-library(reshape2)
-#set working directory
 
-setwd("/Users/few5014/Desktop/Stat_184/PUBG")
+
 #This reads in the flight data and stores it as an object called 'DT'
-ind<-fread("ind_rip_stats.csv")
+ind<-fread("./Lectures/Data/PUBG/ind_rip_stats.csv")
 
-mat<-fread("match_stats.csv")
+mat<-fread("./Lectures/Data/PUBG/match_stats.csv")
 #This reads in the data about airports and stores it as an object called 'AP'
 
 
