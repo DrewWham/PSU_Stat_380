@@ -5,9 +5,9 @@ library(reshape2)
 
 
 #This reads in the flight data and stores it as an object called 'DT'
-DT<-fread("2008.csv")
+DT<-fread("./Lectures/Data/Flights/2008.csv")
 #This reads in the data about airports and stores it as an object called 'AP'
-AP<-fread("airports.csv")
+AP<-fread("./Lectures/Data/Flights/airports.csv")
 
 
 #calculate some aggregate stats 
@@ -45,4 +45,4 @@ Airport_stats<-merge(Avg_DepDelay,AP,all.x=T)
 Airport_stats<-merge(Airport_stats,Avg_Dist,all.x=T)
 Airport_stats<-merge(Airport_stats,Avg_TaxTime,all.x=T)
 
-fwrite(Airport_stats,"Airport_stats.csv")
+fwrite(Airport_stats,"./Homework/Airport_stats.csv")
