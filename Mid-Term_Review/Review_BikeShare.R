@@ -44,9 +44,8 @@ Trips$distance<-distHaversine(Trips[,.(slon,slat)], Trips[,.(elon,elat)])
 #Frequently clients rent and return bikes from the same station. What station has the highest frequency of self-returns for 
 #its rentals?
 
-#Plot the relationship between the number of rentals per station vs the number of docks at a station 
-#Hint: The Stations data represents a snapshot in time, you will need to derive the number of docks from the
-#information available. 
+#how many docks does the station with the most rentals have?
+#Hint:You will need to derive the number of docks from the information available. 
 
 #What is the average distance traveled for bikes during the time period of data collection? 
 
