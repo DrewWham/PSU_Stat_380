@@ -1,12 +1,10 @@
 library(data.table)
-library(reshape2)
 library(ggplot2)
-#set working directory
 
-setwd("/Users/few5014/Desktop/Stat_184/Flights")
+# What is the relationship between Airport size and Delay?
 
 #This reads in the flight data and stores it as an object called 'DT'
-DT<-fread("2008.csv")
+DT<-fread("./Lectures/Data/Flights/2008.csv")
 
 #lets subset out the columns that have to do with types of delays
 Delay_DT<-DT[,c("Origin","CarrierDelay","WeatherDelay","NASDelay","SecurityDelay","LateAircraftDelay")]
@@ -29,7 +27,9 @@ setnames(Delay_Count,"variable","Delay_Type")
 
 
 #get the total number of flights for each airport
-AP_flight_count<-DT[,.N,by=Origin]
+#AP_flight_count<-DT[,.N,by=Origin]
+AP_flight_count<-dcast(DT,Origin~.,length,value.var="Origin")
+setnames(AP_flight_count,".","N")
 
 #merge the total number of flights to the counts of each type of delay
 Delay_Count<-merge(Delay_Count,AP_flight_count,all.x=T)
