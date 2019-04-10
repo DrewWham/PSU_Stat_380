@@ -32,7 +32,7 @@ test<-matrix(unlist(strsplit(DT$sdate,"T")),ncol=2,byrow=T)
 Time<-data.table(matrix(unlist(strsplit(DT$sdate,"T")),ncol=2,byrow=T))
 
 # using stringi match
-location<-"wisconson ave $ O st nw"
+
 sub_DT<-DT[stri_startswith_fixed(DT$sstation,"Wis")]
 
 # homework: make a bar plot of showing the number of rentals for each client type for each day of the week.
