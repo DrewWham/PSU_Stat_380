@@ -1,6 +1,11 @@
 library(data.table)
 library(lubridate)
 
+# additional reading:
+# https://www.r-bloggers.com/understanding-data-table-rolling-joins/
+
+# What are the average wellness values for the 3 days before each game?
+
 # read in data
 games<-fread("./Lectures/Data/DataFest/games.csv")
 wellness<-fread("./Lectures/Data/DataFest/wellness.csv")
