@@ -28,8 +28,11 @@ car_avg_delay<-dcast(SCE,UniqueCarrier~.,mean,,na.rm=T,value.var="DepDelay")
 
 #3
 # In terms of departure delay what is the best month for travel out of the University Park Airport?
+<<<<<<< HEAD
 
 month_avg_delay<-dcast(SCE,Month~.,mean,,na.rm=T,value.var="DepDelay")[order(-.)]
+=======
+>>>>>>> 86477db2b1a42a651044b0f645360fe43aa92ce7
 
 #4
 # Format the date and time as a date-time object. Then use geom_smooth to plot the average departure delay for Delta, American Airlines
