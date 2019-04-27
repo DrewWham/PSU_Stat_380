@@ -9,6 +9,7 @@ library(data.table)
 library(ggplot2)
 library(lubridate)
 DT<-fread("./Lectures/Data/Yelp/yelp_academic_dataset_reviews_no_text.csv")
+Bus<-fread("./Lectures/Data/Yelp/yelp_academic_dataset_business.csv")
 
 DT$date<-as_date(DT$date)
 DT$n_month<-month(DT$date)
@@ -63,8 +64,20 @@ rolled_DT$rev_diff<-rolled_DT$i.avg_star-rolled_DT$avg_star
 
 bus_rev_dif<-dcast(rolled_DT,business_id~.,median,value.var = "rev_diff")
 
-bus_rev_dif[order(.)]
+worst_5<-bus_rev_dif[order(.)][1:5]
 
+Bus<-Bus[business_id %in% worst_5$business_id]
+
+master_DT<-master_DT[business_id %in% worst_5$business_id]
+
+
+
+setkey(Bus,business_id)
+setkey(master_DT,business_id)
+
+master<-merge(master_DT,Bus[,.(business_id,name)])
+
+ggplot(master,aes(x=as.factor(n_date),y=avg_star,fill=name))+geom_bar(stat="identity")+facet_wrap(.~name,scales = "free")+theme(axis.text.x = element_text(angle = 45, hjust = 1))+geom_text(aes(label=num_rev), position=position_dodge(width=0.9), vjust=-0.25)+ theme(legend.position="none")
 
 # We will define "downward trend" as the business whos median change in month-over-month average reviews is lowest.
 # You should ignore any month for any business in which there were less than 30 reviews
