@@ -7,12 +7,11 @@
 # On average, flights that leave which airport travel the longest distance?
 
 #2
-# Delta, American Airlines and United are the primary carriers for passenger airlines out of the 
+# US Airways Express (OH),ExpressJet Airlines (EV) and Endeavor Air (9E) are the primary carriers for passenger airlines out of the 
 # University Park Airport. Which of these airlines has the lowest average departure delay? 
 
 #3
-# Only considering Delta, American Airlines and United, in terms of departure delay what is the
-# best month for travel out of the University Park Airport?
+# In terms of departure delay what is the best month for travel out of the University Park Airport?
 
 #4
 # Format the date and time as a date-time object. Then use geom_smooth to plot the average departure delay for Delta, American Airlines
