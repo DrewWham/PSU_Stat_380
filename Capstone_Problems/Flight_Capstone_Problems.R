@@ -28,11 +28,10 @@ car_avg_delay<-dcast(SCE,UniqueCarrier~.,mean,,na.rm=T,value.var="DepDelay")
 
 #3
 # In terms of departure delay what is the best month for travel out of the University Park Airport?
-<<<<<<< HEAD
+
 
 month_avg_delay<-dcast(SCE,Month~.,mean,,na.rm=T,value.var="DepDelay")[order(-.)]
-=======
->>>>>>> 86477db2b1a42a651044b0f645360fe43aa92ce7
+
 
 #4
 # Format the date and time as a date-time object. Then use geom_smooth to plot the average departure delay for Delta, American Airlines
@@ -60,7 +59,7 @@ ggplot(sub_DT,aes(x=DepTime,y=DepDelay,col=UniqueCarrier))+geom_smooth()
 ggplot(sub_DT,aes(x= jitter(DayOfWeek),y=DepDelay,col=UniqueCarrier))+geom_smooth()
 
 #7
-# Only considering Flights between SFO and ATL, what is the relationship between departure delay and airtime?
+# Only considering Flights from SFO to ATL, what is the relationship between departure delay and airtime?
 
 SFO2ATL<-DT[Origin=="SFO"]
 SFO2ATL<-SFO2ATL[Dest=="ATL"]
@@ -75,7 +74,7 @@ ORD[is.na(ORD)]<-0
 dcast(ORD,.~.,mean,value.var = c("CarrierDelay","WeatherDelay","NASDelay","SecurityDelay","LateAircraftDelay"))
 
 #9
-# only considering flights that occure on the same day, if an airplane (TailNum) experiances a delay what
+# only considering flights that occur on the same day, if an airplane (TailNum) experiences a delay what
 # is the average delay time for that aircrafts next flight?
 roll_DT<-DT[,.(Year,Month,DayofMonth,TailNum,DepTime,DepDelay)]
 
@@ -101,7 +100,7 @@ Delay_rolled_DT<-rolled_DT[DepDelay>0]
 mean(Delay_rolled_DT$i.DepDelay)
 
 #10
-# only considering flights that occure on the same day, if an airplane (TailNum) does not experiances a 
+# only considering flights that occur on the same day, if an airplane (TailNum) does not experiences a 
 # delay what is the average delay time for that aircrafts next flight?
 
 No_Delay_rolled_DT<-rolled_DT[DepDelay<1]
