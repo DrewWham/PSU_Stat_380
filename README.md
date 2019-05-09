@@ -10,17 +10,12 @@
     Friday 12-1
     By appointment
 
-#### Zheye Yuan
-    email: zxy124 [at] psu [dot] edu
 
 ### Class Time & Location
 Section 1:  
-Time/Day: Wednesdays and Fridays from 10:10am - 11:00am 
-Location: 108 Chambers Bldg
+Time/Day: MoTuWeThFr 9:35AM - 10:50AM 
+Location: Stuckeman Family Building 144
 
-Section 2:  
-Time/Day: Wednesdays and Fridays from 11:15am - 12:05am 
-Location: 101 Althouse Lab
 
 ### Laptops 
 Laptops: Bring a laptop to class each day if you have one. Please let me know if you do not have a personal laptop.
@@ -62,30 +57,16 @@ Most issues about classroom activities can be posted to Piazza, but you should u
 ### Grading
 Learning outcomes will be assessed based on performance in each of the following categories accompanied by their impact on the overall grade:
 
-* 40% Weekly Activities
-* 15% Semester Project
+* 40% Weekly Activities (in-class and HW)
+* 15% Capstone Projects
 * 35% Exams (Midterm + Final)
 * 10% Reading Quizzes
 
 
-Final letter grades will be determined as follows:
-* A : 93-100%
-* A-: 90-92%
-* B+: 87-89%
-* B : 83-86%
-* B-: 80-82%
-* C+: 77-79%
-* C : 70-76%
-* D : 60-69%
-* F : < 60%
-
-### Semester Project
-
-The final project provides an opportunity to combine content learned throughout the course for use in some realistic application. Each student is required to individually complete and sumbit their own work, but students consult one another with questions (post questions on Piazza, chat with group members, etc). A successful project will find one or more real & interesting data sets, and use their R programming skills to tell a story that reveals insights from the data. The weekly group activities in the Data Computing text book are good examples of the type of work expected for a successful project, with the differences that you are expected to do the work independently using your own data (not loaded from an R package), and you are responsible for the narrative explaining your reasoning and conclusions as you work through the analysis.
 
 ### In-Class Assignments
 
-Weekly in-class assignments may include an activity or a quiz assigned and completed in part or whole during class. The format and length of in-class assignments will vary as warranted by the subject matter each week, although each assignments will be given the same weight toward the overall grade. There are no make-up assignments, although the lowest score will be dropped at the end of the semester.
+Weekly in-class assignments may include an activity or a quiz assigned and completed in part or whole during class. The format and length of in-class assignments will vary as warranted by the subject matter each week, although each assignments will be given the same weight toward the overall grade. There are no make-up assignments.
 
 ### Reading Quizzes
 
