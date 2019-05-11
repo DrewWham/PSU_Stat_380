@@ -23,8 +23,6 @@ Laptops: Bring a laptop to class each day if you have one. Please let me know if
 ## Resources
 ### Textbooks
 
-[Data Computing](https://www.amazon.com/Data-Computing-Introduction-Wrangling-Visualization/dp/0983965846/ref=sr_1_1?ie=UTF8&qid=1534936861&sr=8-1&keywords=Data+Computing): An Introduction to Wrangling and Visualisation with R by Daniel Kaplan
-
 [R for Data Science](http://r4ds.had.co.nz/index.html) by Hadley Wickham & Garret Grolemund
 
 [Advanced R](https://link.springer.com/book/10.1007/978-1-4842-2077-1) by Matt Wiley and Joshua Wiley
