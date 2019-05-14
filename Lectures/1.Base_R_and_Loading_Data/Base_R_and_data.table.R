@@ -1,3 +1,7 @@
+# we will use the package "data.table" in almost every thing we do this semester.
+# You will need to load it in at the start of every script. 
+library(data.table)
+
 # this is a vector
 Vec <- 7
 # number vector
@@ -34,7 +38,7 @@ DT1<-rbind(DT1,new_row)
 
 # you can add a new column by giving a set of values to a column that does not exist
 
-DT1$V4<-c("G1","F1","G1","F1")
+DT1$V4<-c("G1","F1","G1","F1","P2")
 
 # logical vectors can be converted to 0's and 1's
 DT1$V2<-DT1$V2*1
@@ -52,3 +56,19 @@ str(DT1)
 # and back again 
 
 DT1$V1<-as.numeric(DT1$V1)
+
+# we can change the names of columns
+
+setnames(DT1, "V1", "Num_col")
+# or
+names(DT1)[2]<-"Log_col"
+# or
+setnames(DT1, c("V3","V4"), c("Chr_col","Fac_col"))
+
+# Make your own data table that is 10 x 4, make the first column the odd numbers 1:19, the second column the 
+# even numbers between 2:20, the third column your psu_id, the fourth column True of false based on if column 1
+# and 2 are a multiple of 3 save your workflow as a script and upload your .r file to canvas. 
+
+
+
+
