@@ -67,7 +67,7 @@ setnames(DT1, c("V3","V4"), c("Chr_col","Fac_col"))
 
 # Make your own data table that is 10 x 4, make the first column the odd numbers 1:19, the second column the 
 # even numbers between 2:20, the third column your psu_id, the fourth column True of false based on if column 1
-# and 2 are a multiple of 3 save your workflow as a script and upload your .r file to canvas. 
+# and 2, added together are a multiple of 3. Save your workflow as a script and upload your .r file to canvas. 
 
 
 
