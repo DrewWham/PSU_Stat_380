@@ -1,3 +1,4 @@
+library(data.table)
 # Flights
 download.file(url="https://s3.amazonaws.com/stat.184.data/Flights/2008.csv",destfile='2008.csv', method='curl')
 
