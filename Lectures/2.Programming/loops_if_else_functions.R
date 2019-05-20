@@ -114,7 +114,7 @@ system.time(x<-fast_power_two(50000))
 
 
 
-# nested for loops and a plot
+# nested for loops 
 bernoulli_trials<-function(n,sample_sizes){
 	out_DT<-NULL
 	for(i in 1:length(sample_sizes)){
