@@ -149,15 +149,14 @@ ggplot(out_DT,aes(x=frequency,col=as.factor(sample_size)))+geom_density()
 #a classroom exercise and a challange:
 
 #This function takes 2 arguments, a username and code made of zeros and ones. it will reply back with a % correct
-#write a function to solve the 5 binary unit code
+#write a function to solve the 10 unit binary code
 submitCode<-function(user_id,code){
 url <- paste0("https://dsdemo.vmhost.psu.edu/api/nlp/CodeBreak_10?user_id=",user_id,"&x=",code)
 read_json(url)[[1]][[1]]
 }
 
 #as a challange i have set up another binary code that is 256 units long. I will give you a 100% on your lowest homework
-#if you break it. I will also give a lettergrade on the final to the student that breaks it in the lowest number of total submissions
-#be careful to listen to the rules given in class.
+#if you break it in less than 512 submissions, be careful to listen to the rules given in class.
 submitCode256<-function(user_id,x){
 url <- paste0("https://dsdemo.vmhost.psu.edu/api/nlp/CodeBreak_256?user_id=",user_id,"&x=",x)
 read_json(url)[[1]][[1]]
