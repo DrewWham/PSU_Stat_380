@@ -1,10 +1,11 @@
-library(data.table)
-# Flights
-download.file(url="https://s3.amazonaws.com/stat.184.data/Flights/2008.csv",destfile='2008.csv', method='curl')
-
+# ".csv" files are a common way to store data, we can load ".csv" files with the fread() function:
+# first, you will need to download the flights data
+source("./Lectures/Data/download_flights.R")
 
 # This reads in the flight data and stores it as an object called 'DT'
-DT<-fread("2008.csv")
+DT<-fread("./Lectures/Data/Flights/2008.csv")
+# This reads in the data about airports and stores it as an object called 'AP'
+AP<-fread("./Lectures/Data/Flights/airports.csv")
 # sometimes data files are large and you might want to just load a subset to investigate
 # use the 'nrows' argument to bring a few rows in
 
@@ -103,3 +104,15 @@ delay_tab[,.(Avg_ArrDelay=mean(ArrDelay),Avg_DepDelay=mean(DepDelay)), by=Origin
 # 6) Considering only the New York city area airports, which airport has the largest number of unique destinations?
 
 # 7) Considering only the airports in this dataset with more than 1000 flights, which airport has the lowest average DepDelay?
+
+
+
+
+
+
+
+
+
+
+
+
