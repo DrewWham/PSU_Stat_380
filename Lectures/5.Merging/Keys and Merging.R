@@ -10,6 +10,21 @@ DT<-fread("./Lectures/Data/Flights/2008.csv")
 AP<-fread("./Lectures/Data/Flights/airports.csv")
 
 
+merge_DT<-merge(DT,AP,by.x = "Origin",by.y="iata_code")
+
+
+system.time(DT[Origin == "SFO"])
+system.time(merge(DT,AP,by.x = "Origin",by.y="iata_code"))
+
+
+setnames(AP,"iata_code","Origin")
+
+setkey(DT,Origin)
+setkey(AP,iata_code)
+
+system.time(merge(DT,AP))
+
+
 #calculate some aggregate stats 
 Avg_DepDelay<-dcast(DT,Origin~.,mean,na.rm=T,value.var=c("DepDelay"))
 Avg_Dist<-dcast(DT,Origin~.,mean,na.rm=T,value.var=c("Distance"))
