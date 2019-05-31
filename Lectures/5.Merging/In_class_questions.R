@@ -21,7 +21,7 @@ rev<-fread("./Lectures/Data/Yelp/yelp_academic_dataset_reviews_no_text.csv")
 
 
 # Based on this dataset what is the worst place to get breakfast in Las Vegas?
-# Hint: grep("Coffee",bus$categories)
+# Hint: grep("Breakfast",bus$categories)
 
 
 
