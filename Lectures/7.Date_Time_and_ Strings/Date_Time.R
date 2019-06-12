@@ -37,5 +37,5 @@ str(DT)
 
 
 # homework: make a bar plot of showing the number of rentals for each client type for each day of the week.
-# use a red for registered clients and green for casual clients. Each day of the week should be represented
-# on the x axis. Note that you will need to reshape the data in order to build this plot.  
+# use blue for registered clients and orange for casual clients. Each day of the week should be represented
+# on the x axis.  
