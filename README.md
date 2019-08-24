@@ -1,4 +1,4 @@
-# PSU_Stat_184: Introduction to Data Wrangling in R: Importing, Reshaping, Visualizing Data
+# PSU_Stat_380: Data Science Through Statistical Reasoning and Computation
 
 ## Course Information
 ### Teaching Team
@@ -6,15 +6,15 @@
     Office: 22c Sheilds Building
     email: fcw5014 [at] psu [dot] edu
     Office Hours (22c Sheilds Building):
-    Wed 12-1
-    Friday 12-1
+    Wed 2-3
+    Friday 2-3
     By appointment
 
 
 ### Class Time & Location
 Section 1:  
-Time/Day: MoTuWeThFr 9:35AM - 10:50AM 
-Location: Stuckeman Family Building 144
+Time/Day: MoWeFr 1:25PM - 2:15PM
+Location: Wartik Lab 108
 
 
 ### Laptops 
@@ -23,9 +23,7 @@ Laptops: Bring a laptop to class each day if you have one. Please let me know if
 ## Resources
 ### Textbooks
 
-[R for Data Science](http://r4ds.had.co.nz/index.html) by Hadley Wickham & Garret Grolemund
-
-[Advanced R](https://link.springer.com/book/10.1007/978-1-4842-2077-1) by Matt Wiley and Joshua Wiley
+[An Introduction to Statistical Learning](https://link.springer.com.ezaccess.libraries.psu.edu/book/10.1007/978-1-4614-7138-7)
 
 ### Package Cheatsheets
 * [Base R - Cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/10/r-cheat-sheet-3.pdf)
@@ -56,56 +54,32 @@ Most issues about classroom activities can be posted to Piazza, but you should u
 ### Grading
 Learning outcomes will be assessed based on performance in each of the following categories accompanied by their impact on the overall grade:
 
-* 40% Weekly Activities (in-class and HW)
-* 15% Capstone Projects
-* 35% Exams (Midterm + Final)
+* 30% Completing Weekly Activities (in-class and HW)
+* 20% Performance on Weekly Activities
 * 10% Reading Quizzes
+* 20% Midterm Project Results
+* 20% Final Project Results
 
 
 
 ### In-Class Assignments
 
-Weekly in-class assignments may include an activity or a quiz assigned and completed in part or whole during class. The format and length of in-class assignments will vary as warranted by the subject matter each week, although each assignments will be given the same weight toward the overall grade. There are no make-up assignments.
+Weekly in-class assignments will include an activity assigned and completed in part or whole during class. The format and length of in-class assignments will vary as warranted by the subject matter each week, although each assignments will be given the same weight toward the overall grade. There are no make-up assignments.
 
 ### Reading Quizzes
 
 Reading quizzes will be due before class in order to assess comprehension of the reading assignment that will be discussed each week. This allows students to see new content and concepts for the first time at their own pace in order to more effectively use class time to emphasize main points, clear up confusion, etc. The goal of the reading quiz is to hold students accountable for completing the reading each week before class.
 
-### Homework
-
-Weekly homework assignments will be due before class in order to assess understanding and content mastery. Students are encouraged to work together on homework assignments, but each student must hand in their own work. Late homework is accepted for one week after the original due date and scored using a 50% penalty.
-
 ## Course Description and Objectives
 ### Description
 
-The official course description is available in Penn State’s University Bulletin [linked here](http://undergraduate.bulletins.psu.edu/search/?scontext=courses&search=stat+184), but a recent version is reproduced below for your convenience.
+The official course description is available in Penn State’s University Bulletin [linked here](https://bulletins.psu.edu/search/?scontext=all&search=stat+380&caturl=%2Fundergraduate), but a recent version is reproduced below for your convenience.
 
-STAT 184 Introduction to R: R is a powerful, open-source programming language used widely for statistical analyses. It is easily extendible, and thousands of user-created packages are publicly available to extend its capabilities. This course will introduce R syntax: Students will be asked to utilize various descriptive and graphical statistical techniques for various types of datasets. These datasets will primarily be drawn from those that are readily available for R. Furthermore, this course focus on descriptive statistics and graphical summary techniques rather than inferential statistical techniques. In particular, no statistical background will be assumed. In addition to being asked to write well-documented code for functions in R, students will be exposed to development environments (e.g., the open-source RStudio environment).
-
-### Goals and objectives
-
-Some goals and objectives may be reduced or expanded as time permits, but a tentative list follows:
-
-#### General Tools
-* Become familiar with R programming language
-* Become familiar with RStudio development environment
-* Generate reproducible work 
-* Navigate some basic syntax and idioms in R
-#### Programming style
-* Naming variables
-* Using functions
-* Installing and using contributed packages
-#### Read & write data files using R
-#### Data wrangling using R
-* “Tidy Data”
-* data.table and dplyr package
-#### Generate descriptive statistics using R
-#### Graphs & Data Visualization
-* ggplot2 graphics
+A case study-based course in the use of computing and statistcal reasoning to answer data-intensive questions. STAT 380 Data Science Through Statistical Reasoning and Computation (3) This course addresses the fact that real data are often messy by taking a holistic view of statistical analysis to answer questions of interest. Various case studies will lead students from the computationally intensive process of obtaining and cleaning data, through exploratory techniques, and finally to rudimentary inferential statistics. This process will exploit students exposure to introductory statistics as well as the R programming language, hence the required prerequisites, yet novel computing and analytical techniques will also be introduced throughout the course. For the collection of data, students will learn scripting and database querying skills; for their exploration, they will employ R capabilities for graphical and summary statistics; and for their analysis, they will build upon the basic concepts obtained in their introductory statistics course. The varied case studies will elucidate additional statistical topics such as identifying sources of bias and searching for high-dimensional outliers.
 
 ## Policies & Resources
 ### Working collaboratively
-All quizes and tests must be done individualy without the aid of other students, however many assighnments and in-class activities will be done in groups. Whenever solutions or code is developed in teams the names of all authors should appear on the author line, even when code is submitted individualy. In these cases the principle authors name should appear first followed by all collaborating team members. For this reason, a single persons name may appear on multiple assignments. Turning in an assighnment with an author line that does not reflect the origins of the work is a violation of academic integrity. 
+All quizes and tests must be done individualy without the aid of other students. In-class activities may be discussed in groups but must be completed individualy. Submissions will require the submission of code, the first line of code must always contain a commented out author line. Making a submission without code that is able to produce the exact submission will invalidate the submission. Turning in code with an author line that does not reflect the origins of the work is a violation of academic integrity.  
 
 ### ECoS Code of Mutual Respect
 The Eberly College of Science [Code of Mutual Respect and Cooperation](http://science.psu.edu/climate/support-and-resources/code-of-mutual-respect-and-cooperation-pdf) embodies the values that we hope our faculty, staff, and students possess and will endorse to make the Eberly College of Science a place where every individual feels respected and valued, as well as challenged and rewarded.
