@@ -6,14 +6,16 @@
 
 ## Key Concepts
 
-Column properties
+### Column properties
 - have names
 - contain variables
 
-Row properties
+### Row properties
 - contain observations
 - are exchangable
 - order does not matter
+
+### General Vocabulary
 
 Id variables
 Measured variables
