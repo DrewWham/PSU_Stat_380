@@ -9,7 +9,13 @@
     Wed 2-3
     Friday 2-3
     By appointment
-
+    
+#### Trinetri Ghosh 
+    Office: 331B Thomas Building
+    email: tbg5133 [at] psu [dot] edu
+    Office Hours:
+    Monday from 11AM-1PM
+    
 
 ### Class Time & Location
 Section 1:  
