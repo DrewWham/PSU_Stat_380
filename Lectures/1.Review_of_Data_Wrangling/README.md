@@ -29,6 +29,8 @@
 ### dplyr and data.table 
 * [Side by Side Code](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/)
 
+* [dtplyr](https://github.com/tidyverse/dtplyr)
+
 
 ### Package Cheatsheets
 * [Base R - Cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/10/r-cheat-sheet-3.pdf)
