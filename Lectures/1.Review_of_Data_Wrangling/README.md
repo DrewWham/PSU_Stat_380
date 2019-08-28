@@ -17,14 +17,14 @@
 
 ### General Vocabulary
 
-Id variables
-Measured variables
-Filtering
-Transforming
-Aggregating
-Sorting
-Keys
-Indices
+- Id variables
+- Measured variables
+- Filtering
+- Transforming
+- Aggregating
+- Sorting
+- Keys
+- Indices
 
 
 ### Package Cheatsheets
