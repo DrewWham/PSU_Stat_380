@@ -27,7 +27,7 @@
 - Indices
 
 ### dplyr and data.table 
-* [Side by Side Code] (https://atrebas.github.io/post/2019-03-03-datatable-dplyr/)
+* [Side by Side Code](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/)
 
 
 ### Package Cheatsheets
