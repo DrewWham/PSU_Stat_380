@@ -6,8 +6,8 @@
     Office: 22c Sheilds Building
     email: fcw5014 [at] psu [dot] edu
     Office Hours (22c Sheilds Building):
-    Wed 2-3
-    Friday 2-3
+    Wed 2:30-3:30
+    Friday 2:30-3:30
     By appointment
     
 #### Trinetri Ghosh 
