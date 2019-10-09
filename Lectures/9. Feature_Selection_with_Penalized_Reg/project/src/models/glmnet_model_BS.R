@@ -104,24 +104,4 @@ coef_BS[1:14,]
 
 
 
-#save model
-saveRDS(gl_model,"./project/volume/models/gl_model.model")
 
-test<-as.matrix(test)
-
-#use the full model
-pred<-predict(gl_model,s=bestlam, newx = test)
-
-#########################
-# make a submision file #
-#########################
-
-
-#our file needs to follow the example submission file format.
-#we need the rows to be in the correct order
-
-example_sub$future_price<-pred
-
-
-#now we can write out a submission
-fwrite(example_sub,"./project/volume/data/processed/submit_17.csv")
