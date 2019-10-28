@@ -31,6 +31,9 @@ for(i in 1:2000){
 new_train<-data.table(new_train)
 setnames(new_train,"V1","group")
 
+new_test<-data.table(new_test)
+setnames(new_test,"V1","group")
+
 new_train$x1<-as.numeric(new_train$x1)
 new_train$x2<-as.numeric(new_train$x2)
 new_train$x3<-as.numeric(new_train$x3)
@@ -42,8 +45,6 @@ new_test$x3<-as.numeric(new_test$x3)
 new_test$x4<-as.numeric(new_test$x4)
 new_test$x5<-as.numeric(new_test$x5)
 
-new_test<-data.table(new_test)
-setnames(new_test,"V1","group")
 
 new_train$y<-0
 new_train[group=="A"]$y<-new_train[group=="A"]$x1+new_train[group=="A"]$x2+new_train[group=="A"]$x3
