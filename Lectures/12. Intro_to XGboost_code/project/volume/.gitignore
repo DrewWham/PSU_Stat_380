@@ -1,0 +1,10 @@
+# ignore all files in this dir...
+*
+
+# ... except for these
+!.gitignore
+!.gitkeep
+!models/_empty_model.txt
+
+# ...even if they are in subdirectories
+!*/
