@@ -79,10 +79,3 @@ q_data<-q_data[,.(party,Ap_Pres,UBC,R2C,GSHC,Fox,CNN,Lower_Immigration,Glob_W,Ta
 
 fwrite(q_data,"./project/volume/data/raw/data.csv")
 
-
-
-
-
-
-
-
