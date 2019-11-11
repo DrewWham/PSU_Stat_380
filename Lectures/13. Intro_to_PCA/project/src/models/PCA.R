@@ -107,7 +107,7 @@ gmm_data<-GMM(tsne_dt[,.(V1,V2)],opt_k)
 # the model gives a log-likelihood for each datapoint's membership to each cluster, me need to convert this 
 # log-likelihood into a probability
 
-l_clust<-exp(gmm_data$Log_likelihood)
+l_clust<-gmm_data$Log_likelihood^10
 
 l_clust<-data.table(l_clust)
 
