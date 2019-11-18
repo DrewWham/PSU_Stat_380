@@ -6,28 +6,6 @@ library(ggplot2)
 library(ClusterR)
 
 
-
-
-##########################
-# function for picking k #
-##########################
-
-getOptK <- function(x){
-  x <- abs(x)
-  max_delta_k_pos <- which.max(x)
-  max_delta_k <- max(na.omit(x))
-  n2eval<-(length(x) - max_delta_k_pos) - 2
-  for(i in max_delta_k_pos:(max_delta_k_pos+n2eval)){
-    if(x[max_delta_k_pos + 1]/max_delta_k < 0.15 & x[max_delta_k_pos + 2]/max_delta_k < 0.15 & x[max_delta_k_pos + 3]/max_delta_k < 0.15){
-    }else{
-      max_delta_k_pos <- max_delta_k_pos + 1
-    }
-  }
-  max_delta_k_pos
-}
-
-
-
 # load in data 
 data<-fread("./project/volume/data/raw/data.csv")
 
@@ -97,6 +75,27 @@ del_k_tab<-data.table(delta_k=delta_k,k=1:length(delta_k))
 ggplot(del_k_tab,aes(x=k,y=-delta_k))+geom_point()+geom_line()+
   scale_x_continuous(breaks = scales::pretty_breaks(n = 10))+
   geom_text(aes(label=k),hjust=0, vjust=-1)
+
+
+
+##########################
+# function for picking k #
+##########################
+
+getOptK <- function(x){
+  x <- abs(x)
+  max_delta_k_pos <- which.max(x)
+  max_delta_k <- max(na.omit(x))
+  n2eval<-(length(x) - max_delta_k_pos) - 2
+  for(i in max_delta_k_pos:(max_delta_k_pos+n2eval)){
+    if(x[max_delta_k_pos + 1]/max_delta_k < 0.15 & x[max_delta_k_pos + 2]/max_delta_k < 0.15 & x[max_delta_k_pos + 3]/max_delta_k < 0.15){
+    }else{
+      max_delta_k_pos <- max_delta_k_pos + 1
+    }
+  }
+  max_delta_k_pos
+}
+
 
 # You may visualy inspect the plot to pick the optimal k, I have writen a function that expresses the logic that I use
 opt_k<-getOptK(delta_k)
