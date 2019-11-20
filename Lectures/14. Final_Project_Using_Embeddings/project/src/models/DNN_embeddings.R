@@ -14,13 +14,8 @@ emb
 }
 
 
-getEmbeddings("hi my name is drew")
 
-
-
-
-
-data<-fread('Pets.csv')
+data<-fread('./project/volume/data/raw/Pets.csv')
 
 emb_dt<-NULL
 as.data.frame.table(emb_dt)
