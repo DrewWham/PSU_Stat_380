@@ -1,7 +1,7 @@
 library(httr)
-
-
-
+library(data.table)
+library(Rtsne)
+library(ggplot2)
 
 
 getEmbeddings<-function(text){
