@@ -20,7 +20,8 @@ set.seed(777)
 train<-fread('./project/volume/data/raw/Stat_380_train.csv')
 test<-fread('./project/volume/data/raw/Stat_380_test.csv')
 
-
+train$Id<-NULL
+test$Id<-NULL
 
 y.train<-train$SalePrice
 
@@ -42,7 +43,7 @@ params <- list(  objective           = "reg:linear",
                  booster             = "gbtree",
                  eval_metric         = "rmse",
                  eta                 = 0.005,
-                 max_depth           = as.integer(10),
+                 max_depth           = 10,
                  subsample           = 0.8,
                  colsample_bytree    = 0.8
 )
@@ -55,30 +56,27 @@ preds<-predict(xgbst_m, newdata=dtest,missing=NA)
 
 ## Calculate shap values
 
-shap_values <- shap.values(xgb_model = xgbst_m , X_train = train)
+shap_values <- shap.values(xgb_model = xgbst_m , X_train = train[1:1000,])
 
 
 
 ## Prepare data for top N variables
-shap_long <- shap.prep(shap_contrib = shap_values$shap_score, X_train = train)
+shap_long <- shap.prep(shap_contrib = shap_values$shap_score, X_train = train[1:1000,])
 
-## Plot shap overall metrics
-plot.shap.summary(data_long = shap_data_long)
 
 #shap summary
 shap.plot.summary(shap_long)
 
-## diluted points
-shap.plot.summary(shap_long, x_bound  = 1.2, dilute = 10)
-
-shap.summary_plot(shap_values, train)
-
-
-g1 <- shap.plot.dependence(data_long = shap_long, x = 'dayint', y = 'dayint', color_feature = 'Column_WV') + ggtitle("(A) SHAP values")
+shap.plot.dependence(data_long = shap_long, x = 'OverallQual', y = 'OverallQual', color_feature = 'TotRmsAbvGrd') + ggtitle("(A) SHAP values")
+shap.plot.dependence(data_long = shap_long, x = 'TotRmsAbvGrd', y = 'TotRmsAbvGrd', color_feature = 'OverallQual') + ggtitle("(A) SHAP values")
+shap.plot.dependence(data_long = shap_long, x = 'TotalBsmtSF', y = 'TotalBsmtSF', color_feature = 'OverallQual') + ggtitle("(A) SHAP values")
+shap.plot.dependence(data_long = shap_long, x = 'LotFrontage', y = 'LotFrontage', color_feature = 'OverallQual') + ggtitle("(A) SHAP values")
+shap.plot.dependence(data_long = shap_long, x = 'OverallCond', y = 'OverallCond', color_feature = 'OverallQual') + ggtitle("(A) SHAP values")
 
 
+#shap_int <- shap.prep.interaction(xgb_mod = xgbst_m, X_train = train[1:100,])
 
-
+#shap.plot.dependence(data_long = shap_long,data_int = shap_int,x= "OverallQual", y = "TotRmsAbvGrd", color_feature = "TotRmsAbvGrd")
 
 test<-fread('Stat_380_test.csv')
 
@@ -86,4 +84,4 @@ test<-test[,.(Id)]
 test$SalePrice<-preds
 
 
-fwrite(test,"Get_Good.csv")
+fwrite(test,"Submit.csv")
