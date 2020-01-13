@@ -58,20 +58,20 @@ Follow the below links download and install the appropriate version of R, R Stud
 * [Atom](https://atom.io)
 
 ## Communication
-### Piazza
+### Kaggle
 
-We will be using Piazza for class-related discussion and questions, to help you benefit from each other’s questions and the collective knowledge of your classmates and professor. Questions can be posted to the entire class (for content-related questions). I encourage you to ask questions if you are struggling to understand a concept, and to answer your classmates’ questions when you can. Note that you may choose to post questions or comments to Piazza anonymously if you wish. Piazza may also be used for course announcements.
+We will be using Kaggle for class-related discussion and questions, to help you benefit from each other’s questions and the collective knowledge of your classmates and professor. Questions can be posted to the entire class (for content-related questions). I encourage you to ask questions if you are struggling to understand a concept, and to answer your classmates’ questions when you can.
 
-Do Not use Piazza for issues related to your grade or other private matters (not even an instructor post); email those questions or comments to the instructor directly or discuss them in person.
+Do Not use Kaggle for issues related to your grade or other private matters; email those questions or comments to the instructor directly or discuss them in person.
 
 ### Email
 
-Most issues about classroom activities can be posted to Piazza, but you should use email (or a conversation in person) for all personal or private matters.
+Most issues about classroom activities can be posted to Kaggle, but you should use email (or a conversation in person) for all personal or private matters.
 
 ### Grading
 Learning outcomes will be assessed based on performance in each of the following categories accompanied by their impact on the overall grade:
 
-* 30% Completing Weekly Activities (in-class and HW)
+* 30% Weekly Activities (in-class and HW)
 * 20% Performance on Weekly Activities
 * 10% Reading Quizzes
 * 20% Midterm Project Results
