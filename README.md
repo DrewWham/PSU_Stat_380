@@ -10,17 +10,28 @@
     Friday 2:30-3:30
     By appointment
     
-#### Trinetri Ghosh 
-    Office: 331B Thomas Building
-    email: tbg5133 [at] psu [dot] edu
+#### Mauricio Nascimento 
+    Office: 421 Thomas Building
+    email: mfn120 [at] psu [dot] edu
     Office Hours:
-    Monday from 11AM-1PM
+    T/R 2pm - 3pm
     
 
 ### Class Time & Location
 Section 1:  
 Time/Day: MoWeFr 1:25PM - 2:15PM
-Location: Wartik Lab 108
+Location: Keller Building 115
+
+### Course Recordings
+As part of this course experience, we will experiment with recording the class meetings using Zoom (https://psu.zoom.us). 
+Please NOTE: 
+This is experimental, and there is a risk the technology will not work correctly each class session. Please do not depend on this technology for course content, your attendence is manditory. If you miss class and this technology fails you will still be responsable for covered course content as well as any assignment given in class. 
+The recordings are only available to you from within our Canvas course site in Canvas Media Gallery; videos will not be viewable by anyone outside of the class. 
+If for some reason you do not want your voice recorded, please let me know. The only live microphone will be attached to me and I will cover the microphone when students ask questions to minimize the potential of recording voices other than my own. If you have any concerns regarding the use of this technology in class please let me know in person or by email.  
+
+The teaching staff will make every effort to make class recordings available shortly after the class session.
+The recordings will also be used in conjunction with an artificial intelligence application that is designed to provide instructors with information about their course, such as the percentage of time they spend across a semester focusing on specific course topics. 
+Please share your experience and impressions with using the Zoom recordings!
 
 
 ### Laptops 
