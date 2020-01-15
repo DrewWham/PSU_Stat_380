@@ -4,6 +4,10 @@
 
 * [Tidy Data Paper by Hadley Wickham](https://vita.had.co.nz/papers/tidy-data.pdf)
 
+## Activity: How do you make this data "Model Ready"
+
+* [Military Payroll Dataset](https://docs.google.com/spreadsheets/d/1Ow6Cm4z-Z1Yybk3i352msulYCEDOUaOghmo9ALajyHo/edit#gid=1811988794)
+
 ## Key Concepts
 
 ### Column properties
