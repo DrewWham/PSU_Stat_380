@@ -35,6 +35,12 @@
 
 * [dtplyr](https://github.com/tidyverse/dtplyr)
 
+### Basic Data wrangling review 
+* [Intro to data.table](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html)
+* [Keys and Fast subsets](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-keys-fast-subset.html)
+* [Reshaping data](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-reshape.html)
+* [Indexing](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-secondary-indices-and-auto-indexing.html)
+
 
 ### Package Cheatsheets
 * [Base R - Cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/10/r-cheat-sheet-3.pdf)
