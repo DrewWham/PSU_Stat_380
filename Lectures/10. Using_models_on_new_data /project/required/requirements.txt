@@ -1,8 +1,0 @@
-#list of packaged for python
-
-#pandas==0.18.1
-#csv
-#os
-#awscli
-#boto3
-#
