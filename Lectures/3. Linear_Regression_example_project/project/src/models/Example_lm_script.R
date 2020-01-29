@@ -1,11 +1,14 @@
-library(caret)
+library(caret) #http://topepo.github.io/caret/index.html
 library(data.table)
+library(Metrics)
+
 set.seed(77)
 
 train<-fread('./project/volume/data/interim/train.csv')
 test<-fread('./project/volume/data/interim/test.csv')
 
 train_y<-train$DepDelay
+test_y<-test$DepDelay
 
 dummies <- dummyVars(DepDelay ~ ., data = train)
 train<-predict(dummies, newdata = train)
@@ -31,12 +34,15 @@ summary(lm_model)
 saveRDS(dummies,"./project/volume/models/DepDelay_lm.dummies")
 saveRDS(lm_model,"./project/volume/models/DepDelay_lm.model")
 
-test$DepDelay<-predict(lm_model,newdata = test)
+test$pred<-predict(lm_model,newdata = test)
 
 #our file needs to follow the example submission file format. So we need to only have the Id and saleprice column and
 #we also need the rows to be in the correct order
 
-submit<-test[,.(DepDelay)]
+submit<-test[,.(pred)]
 
 #now we can write out a submission
 fwrite(submit,"./project/volume/data/processed/submit_lm.csv")
+
+rmse(test_y,test$pred)
+
