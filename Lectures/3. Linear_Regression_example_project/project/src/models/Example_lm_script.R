@@ -46,3 +46,6 @@ fwrite(submit,"./project/volume/data/processed/submit_lm.csv")
 
 rmse(test_y,test$pred)
 
+#null model rmse
+rmse(test_y,mean(train_y))
+
