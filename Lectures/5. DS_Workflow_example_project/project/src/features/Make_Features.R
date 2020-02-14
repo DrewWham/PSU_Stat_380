@@ -34,7 +34,7 @@ master<-rbind(train,test)
 master$team_1<-as.character(master$team_1)
 master$team_2<-as.character(master$team_2)
 
-ranks$DayNum<-ranks$RankingDayNum-1
+ranks$DayNum<-ranks$RankingDayNum+1
 
 pom_ranks<-ranks[SystemName=="POM"][,.(Season,DayNum,TeamID,OrdinalRank)]
 setnames(pom_ranks,"TeamID","team_1")
