@@ -1,4 +1,3 @@
-#load in libraries
 library(data.table)
 library(caret)
 library(Metrics)
@@ -17,19 +16,42 @@ example_sub<-fread("./project/volume/data/raw/example_submission.csv")
 # Prep Data for Modeling #
 ##########################
 
-# make train and test have the same columns
-test$future_price<-0
+train$current_date<-as_date(train$current_date)
+train<-train[order(-current_date)]
 
-year_num<-as.numeric(as.factor(year(as_date(train$current_date))))
+train_1<-train[current_date<as_date("2018-04-27")]
+test_1<-train[current_date==as_date("2018-04-27")]
+
+train_2<-train[current_date<as_date("2018-07-13")]
+test_2<-train[current_date==as_date("2018-07-13")]
+
+train_3<-train[current_date<as_date("2018-10-05")]
+test_3<-train[current_date==as_date("2018-10-05")]
+
+
 
 # subset out only the columns to model
 
 drops<- c('id','future_date','current_date')
+
 train<-train[, !drops, with = FALSE]
 test<-test[, !drops, with = FALSE]
 
+train_1<-train_1[, !drops, with = FALSE]
+test_1<-test_1[, !drops, with = FALSE]
+
+train_2<-train_2[, !drops, with = FALSE]
+test_2<-test_2[, !drops, with = FALSE]
+
+train_3<-train_3[, !drops, with = FALSE]
+test_3<-test_3[, !drops, with = FALSE]
+
 #save the response var because dummyVars will remove
 train_y<-train$future_price
+
+train_1y<-train_1$future_price
+train_2y<-train_2$future_price
+train_3y<-train_3$future_price
 
 
 # work with dummies
@@ -38,8 +60,24 @@ dummies <- dummyVars(future_price ~ ., data = train)
 train<-predict(dummies, newdata = train)
 test<-predict(dummies, newdata = test)
 
+train_1<-predict(dummies, newdata = train_1)
+test_1<-predict(dummies, newdata = test_1)
+train_2<-predict(dummies, newdata = train_2)
+test_2<-predict(dummies, newdata = test_2)
+train_3<-predict(dummies, newdata = train_3)
+test_3<-predict(dummies, newdata = test_3)
+
 train<-data.table(train)
 test<-data.table(test)
+
+train_1<-data.table(train_1)
+test_1<-data.table(test_1)
+
+train_2<-data.table(train_2)
+test_2<-data.table(test_2)
+
+train_3<-data.table(train_3)
+test_3<-data.table(test_3)
 
 
 
@@ -51,8 +89,14 @@ test<-data.table(test)
 
 
 train<-as.matrix(train)
+train_1<-as.matrix(train_1)
+train_2<-as.matrix(train_2)
+train_3<-as.matrix(train_3)
 
-gl_model<-cv.glmnet(train, train_y, alpha = 1,family="gaussian",foldid = year_num,nfolds = length(unique(year_num)))
+gl_model<-glmnet(train_1, train_1y, alpha = 1,family="gaussian")
+
+
+
 
 plot(gl_model)
 
