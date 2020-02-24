@@ -53,6 +53,11 @@ train_1y<-train_1$future_price
 train_2y<-train_2$future_price
 train_3y<-train_3$future_price
 
+test_1y<-test_1$future_price
+test_2y<-test_2$future_price
+test_3y<-test_3$future_price
+
+test$future_price<-0
 
 # work with dummies
 
@@ -93,10 +98,23 @@ train_1<-as.matrix(train_1)
 train_2<-as.matrix(train_2)
 train_3<-as.matrix(train_3)
 
+test<-as.matrix(test)
+test_1<-as.matrix(test_1)
+test_2<-as.matrix(test_2)
+test_3<-as.matrix(test_3)
+
 gl_model<-glmnet(train_1, train_1y, alpha = 1,family="gaussian")
 
+error_DT<-NULL
+for (i in 1:length(unclass(gl_model)$lambda)){
+  model_lambda<-unclass(gl_model)$lambda[i]
+  pred<-predict(gl_model,s=model_lambda, newx = test_1)
+  error<-rmse(pred[,1],test_1y)
+  new_row<-c(model_lambda,error)
+  error_DT<-rbind(error_DT,new_row)
+}
 
-
+pred<-predict(gl_model,s=bestlam, newx = test)
 
 plot(gl_model)
 
