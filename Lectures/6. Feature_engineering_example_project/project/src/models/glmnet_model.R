@@ -114,13 +114,53 @@ for (i in 1:length(unclass(gl_model)$lambda)){
   error_DT<-rbind(error_DT,new_row)
 }
 
-pred<-predict(gl_model,s=bestlam, newx = test)
+error_DT_1<-data.table(error_DT)
+setnames(error_DT_1,c("V1","V2"),c("lambda","error"))
 
-plot(gl_model)
+gl_model<-glmnet(train_2, train_2y, alpha = 1,family="gaussian")
 
-bestlam<-gl_model$lambda.min
+error_DT<-NULL
+for (i in 1:length(unclass(gl_model)$lambda)){
+  model_lambda<-unclass(gl_model)$lambda[i]
+  pred<-predict(gl_model,s=model_lambda, newx = test_2)
+  error<-rmse(pred[,1],test_2y)
+  new_row<-c(model_lambda,error)
+  error_DT<-rbind(error_DT,new_row)
+}
 
 
+error_DT_2<-data.table(error_DT)
+setnames(error_DT_2,c("V1","V2"),c("lambda","error"))
+
+gl_model<-glmnet(train_3, train_3y, alpha = 1,family="gaussian")
+
+error_DT<-NULL
+for (i in 1:length(unclass(gl_model)$lambda)){
+  model_lambda<-unclass(gl_model)$lambda[i]
+  pred<-predict(gl_model,s=model_lambda, newx = test_3)
+  error<-rmse(pred[,1],test_3y)
+  new_row<-c(model_lambda,error)
+  error_DT<-rbind(error_DT,new_row)
+}
+
+error_DT_3<-data.table(error_DT)
+setnames(error_DT_3,c("V1","V2"),c("lambda","error"))
+
+error_DT_1$set<-"2018-04-27"
+error_DT_2$set<-"2018-07-13"
+error_DT_3$set<-"2018-10-05"
+
+error_DT_full<-rbind(error_DT_1,error_DT_2,error_DT_3)
+
+ggplot(error_DT_full,aes(x=log(lambda),y=error,col=set))+geom_smooth()
+
+lambda_1<-error_DT_full[error==min(error_DT_1$error)]$lambda
+lambda_2<-error_DT_full[error==min(error_DT_2$error)]$lambda
+lambda_3<-error_DT_full[error==min(error_DT_3$error)]$lambda
+all_best_lambdas<-c(lambda_1,lambda_2,lambda_3)
+
+
+bestlam<-mean(all_best_lambdas)
 
 ####################################
 # fit the model to all of the data #
