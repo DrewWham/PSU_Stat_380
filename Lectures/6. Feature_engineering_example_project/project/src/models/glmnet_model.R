@@ -182,6 +182,9 @@ test<-as.matrix(test)
 #use the full model
 pred<-predict(gl_model,s=bestlam, newx = test)
 
+bestlam
+predict(gl_model,s=bestlam, newx = test,type="coefficients")
+
 #########################
 # make a submision file #
 #########################
