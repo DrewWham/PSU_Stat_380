@@ -8,8 +8,8 @@ library(lubridate)
 
 
 #read in data, notice the path will always look like this because the assumed working directory is the repo level folder
-train<-fread("./project/volume/data/interim/train_v1.csv")
-test<-fread("./project/volume/data/interim/test_v1.csv")
+train<-fread("./project/volume/data/interim/train_bs.csv")
+test<-fread("./project/volume/data/interim/test_bs.csv")
 example_sub<-fread("./project/volume/data/raw/example_submission.csv")
 
 ##########################
