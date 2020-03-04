@@ -36,34 +36,49 @@ master$team_2<-as.character(master$team_2)
 
 ranks$DayNum<-ranks$RankingDayNum+1
 
-pom_ranks<-ranks[SystemName=="POM"][,.(Season,DayNum,TeamID,OrdinalRank)]
-setnames(pom_ranks,"TeamID","team_1")
 
-pom_ranks$team_1<-as.character(pom_ranks$team_1)
+system_lst<-c("POM","PIG","SAG","MOR","DOK")
 
-setkey(master,Season,team_1,DayNum)
-setkey(pom_ranks,Season,team_1,DayNum)
+for (i in 1:length(system_lst)){
 
-master<-pom_ranks[master,roll=T]
-setnames(master,"OrdinalRank","team_1_POM")
+  one_rank<-ranks[SystemName==system_lst[i]][,.(Season,DayNum,TeamID,OrdinalRank)]
+  setnames(one_rank,"TeamID","team_1")
+
+  one_rank$team_1<-as.character(one_rank$team_1)
+
+  setkey(master,Season,team_1,DayNum)
+  setkey(one_rank,Season,team_1,DayNum)
+
+  master<-one_rank[master,roll=T]
+  setnames(master,"OrdinalRank","team_1_rank")
 
 
-setnames(pom_ranks,"team_1","team_2")
-setkey(master,Season,team_2,DayNum)
-setkey(pom_ranks,Season,team_2,DayNum)
+  setnames(one_rank,"team_1","team_2")
+  setkey(master,Season,team_2,DayNum)
+  setkey(one_rank,Season,team_2,DayNum)
 
-master<-pom_ranks[master,roll=T]
+  master<-one_rank[master,roll=T]
 
-setnames(master,"OrdinalRank","team_2_POM")
+  setnames(master,"OrdinalRank","team_2_rank")
 
-master$POM_dif<-master$team_2_POM-master$team_1_POM
+  master$rank_dif<-master$team_2_rank-master$team_1_rank
+
+  master$team_1_rank<-NULL
+  master$team_2_rank<-NULL
+
+  setnames(master,"rank_dif",paste0(system_lst[i],"_dif"))
+
+}
 
 master<-master[order(Season,DayNum)]
 
-master<-master[,.(team_1,team_2,POM_dif,result)]
-
+master<-master[,.(team_1,team_2,POM_dif,PIG_dif, SAG_dif,MOR_dif,DOK_dif,result)]
 
 master<-master[!is.na(master$POM_dif)]
+master<-master[!is.na(master$PIG_dif)]
+master<-master[!is.na(master$SAG_dif)]
+master<-master[!is.na(master$MOR_dif)]
+master<-master[!is.na(master$DOK_dif)]
 
 test<-master[result==0.5]
 train<-master[result==1]
@@ -73,9 +88,20 @@ train_a<-train[rand_inx,]
 train_b<-train[!rand_inx,]
 
 train_b$result<-0
+train_b$PIG_dif<-train_b$PIG_dif*-1
+train_b$SAG_dif<-train_b$SAG_dif*-1
+train_b$MOR_dif<-train_b$MOR_dif*-1
+train_b$DOK_dif<-train_b$DOK_dif*-1
 train_b$POM_dif<-train_b$POM_dif*-1
 
 train<-rbind(train_a,train_b)
 
 fwrite(test,'./project/volume/data/interim/test.csv')
 fwrite(train,'./project/volume/data/interim/train.csv')
+
+
+
+ggplot(train,aes(x=POM_dif,fill=as.factor(result)))+geom_density()
+
+
+
