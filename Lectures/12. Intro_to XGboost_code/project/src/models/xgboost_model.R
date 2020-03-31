@@ -4,7 +4,8 @@ library(caret)
 library(Metrics)
 library(xgboost)
 
-
+#advanced methods of hyperparameter tuning discussed here:
+#https://rpubs.com/jeandsantos88/search_methods_for_hyperparameter_tuning_in_r
 
 
 #read in data, notice the path will always look like this because the assumed working directory is the repo level folder
@@ -38,14 +39,14 @@ dtest <- xgb.DMatrix(x.test,missing=NA)
 ########################
 
 param <- list(  objective           = "reg:linear",
-                gamma               =0.2,
+                gamma               =0.02,
                 booster             = "gbtree",
                 eval_metric         = "rmse",
                 eta                 = 0.002,
                 max_depth           = 20,
                 min_child_weight    = 1,
-                subsample           = 0.9,
-                colsample_bytree    = 0.9,
+                subsample           = 1.0,
+                colsample_bytree    = 1.0,
                 tree_method = 'hist'
 )
 
