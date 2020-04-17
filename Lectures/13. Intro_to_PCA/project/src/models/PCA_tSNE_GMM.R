@@ -41,12 +41,20 @@ pca_dt$party<-party
 ggplot(pca_dt,aes(x=PC1,y=PC2,col=party))+geom_point()
 
 
+# Laurens van der Maaten page on t-SNE author of original t-SNE paper
+#https://lvdmaaten.github.io/tsne/
+
+# distill.pub guide on using t-SNE effectivly
+#https://distill.pub/2016/misread-tsne/
+
+# response to distill.pub article with discussion of practical application of t-SNE
+#https://towardsdatascience.com/how-to-tune-hyperparameters-of-tsne-7c0596a18868
 
 
 # run t-sne on the PCAs, note that if you already have PCAs you need to set pca=F or it will run a pca again. 
 # pca is built into Rtsne, ive run it seperatly for you to see the internal steps
 
-tsne<-Rtsne(pca_dt,pca = F)
+tsne<-Rtsne(pca_dt,pca = F,perplexity=5)
 
 # grab out the coordinates
 tsne_dt<-data.table(tsne$Y)
