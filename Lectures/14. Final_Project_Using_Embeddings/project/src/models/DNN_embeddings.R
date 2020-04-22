@@ -3,6 +3,8 @@ library(data.table)
 library(Rtsne)
 library(ggplot2)
 
+set.seed(3)
+
 
 getEmbeddings<-function(text){
 input <- list(
@@ -26,7 +28,7 @@ for (i in 1:length(data$text)){
 }
 emb_dt<-data.table(emb_dt)
 
-tsne<-Rtsne(emb_dt,perplexity=5)
+tsne<-Rtsne(emb_dt,perplexity=10)
 
 tsne_dt<-data.table(tsne$Y)
 
