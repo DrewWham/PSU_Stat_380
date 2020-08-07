@@ -40,7 +40,7 @@ Laptops: Bring a laptop to class each day if you have one. Please let me know if
 ## Resources
 ### Textbooks
 
-[An Introduction to Statistical Learning](https://link.springer.com.ezaccess.libraries.psu.edu/book/10.1007/978-1-4614-7138-7)
+[An Introduction to Statistical Learning](https://link-springer-com.ezaccess.libraries.psu.edu/book/10.1007%2F978-1-4614-7138-7)
 
 ### Package Cheatsheets
 * [Base R - Cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/10/r-cheat-sheet-3.pdf)
