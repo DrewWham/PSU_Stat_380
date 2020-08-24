@@ -6,21 +6,17 @@
     Office: 22c Sheilds Building
     email: fcw5014 [at] psu [dot] edu
     Office Hours (22c Sheilds Building):
-    Wed 2:30-3:30
-    Friday 2:30-3:30
+    Wed 4:00-5:00
+    Friday 4:00-5:00
     By appointment
     
-#### Mauricio Nascimento 
-    Office: 421 Thomas Building
-    email: mfn120 [at] psu [dot] edu
-    Office Hours:
-    T/R 2pm - 3pm
+
     
 
 ### Class Time & Location
 Section 1:  
 Time/Day: MoWeFr 1:25PM - 2:15PM
-Location: Keller Building 115
+Location: zoom
 
 ### Course Recordings
 As part of this course experience, we will experiment with recording the class meetings using Zoom (https://psu.zoom.us). 
