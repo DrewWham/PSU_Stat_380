@@ -5,15 +5,8 @@ library(Metrics)
 #download.file(url="https://s3.amazonaws.com/stat.184.data/Flights/2008.csv",destfile='./project/volume/data/raw/2008.csv', method='curl')
 #download.file(url="https://s3.amazonaws.com/stat.184.data/Flights/airports.csv",destfile='./project/volume/data/raw/airports.csv', method='curl')
 
-DT<-fread('./project/volume/data/raw/2008.csv')
-
-sub_DT<-DT[!is.na(DT$DepDelay)][,.(Origin,DepDelay)]
-
-#here I divide the data into train and test so that I'm working on a similar problem as all of you
-rand_inx<-sample(1:nrow(sub_DT),1000000)
-
-train<-sub_DT[!rand_inx,]
-test<-sub_DT[rand_inx,]
+train<-fread('./project/volume/data/interim/train.csv')
+test<-fread('./project/volume/data/interim/test.csv')
 
 
 
