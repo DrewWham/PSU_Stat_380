@@ -1,10 +1,10 @@
 library(data.table)
 set.seed(77)
 
-test<-fread('./project/volume/data/raw/example_sub.csv')
-season<-fread('./project/volume/data/raw/season.csv')
-tourney<-fread('./project/volume/data/raw/tourney.csv')
-ranks<-fread('./project/volume/data/raw/ranks.csv')
+test<-fread('./project/volume/data/raw/example_sub_MM.csv')
+season<-fread('./project/volume/data/raw/season_MM.csv')
+tourney<-fread('./project/volume/data/raw/tourney_MM.csv')
+ranks<-fread('./project/volume/data/raw/ranks_MM.csv')
 
 # Clean test
 
