@@ -102,13 +102,13 @@ test_2<-as.matrix(test_2)
 test_3<-as.matrix(test_3)
 
 #note that your problem is a linear reg problem, this is a logistic regression problem
-gl_model_1<-glmnet(train_1, train_1y, alpha = 1,family="gaussian")
+gl_model_1<-glmnet(train_1, train_1y, alpha = 1,family="binomial")
 
 error_DT<-NULL
 for (i in 1:length(unclass(gl_model_1)$lambda)){
   model_lambda<-unclass(gl_model_1)$lambda[i]
-  pred<-predict(gl_model_1,s=model_lambda, newx = test_1)
-  error<-rmse(pred[,1],test_1y)
+  pred<-predict(gl_model_1,s=model_lambda, newx = test_1,type="response")
+  error<-mean(ll(test_1y,pred[,1]))
   new_row<-c(model_lambda,error)
   error_DT<-rbind(error_DT,new_row)
 }
@@ -116,13 +116,13 @@ for (i in 1:length(unclass(gl_model_1)$lambda)){
 error_DT_1<-data.table(error_DT)
 setnames(error_DT_1,c("V1","V2"),c("lambda","error"))
 
-gl_model_2<-glmnet(train_2, train_2y, alpha = 1,family="gaussian")
+gl_model_2<-glmnet(train_2, train_2y, alpha = 1,"binomial")
 
 error_DT<-NULL
 for (i in 1:length(unclass(gl_model_2)$lambda)){
   model_lambda<-unclass(gl_model_2)$lambda[i]
-  pred<-predict(gl_model_2,s=model_lambda, newx = test_2)
-  error<-rmse(pred[,1],test_2y)
+  pred<-predict(gl_model_2,s=model_lambda, newx = test_2,type="response")
+  error<-mean(ll(test_2y,pred[,1]))
   new_row<-c(model_lambda,error)
   error_DT<-rbind(error_DT,new_row)
 }
@@ -131,13 +131,13 @@ for (i in 1:length(unclass(gl_model_2)$lambda)){
 error_DT_2<-data.table(error_DT)
 setnames(error_DT_2,c("V1","V2"),c("lambda","error"))
 
-gl_model_3<-glmnet(train_3, train_3y, alpha = 1,family="gaussian")
+gl_model_3<-glmnet(train_3, train_3y, alpha = 1,"binomial")
 
 error_DT<-NULL
 for (i in 1:length(unclass(gl_model_3)$lambda)){
   model_lambda<-unclass(gl_model_3)$lambda[i]
-  pred<-predict(gl_model_3,s=model_lambda, newx = test_3)
-  error<-rmse(pred[,1],test_3y)
+  pred<-predict(gl_model_3,s=model_lambda, newx = test_3,type="response")
+  error<-mean(ll(test_3y,pred[,1]))
   new_row<-c(model_lambda,error)
   error_DT<-rbind(error_DT,new_row)
 }
@@ -169,7 +169,7 @@ bestlam<-mean(all_best_lambdas)
 #now fit the full model
 
 #fit a logistic model
-gl_model<-glmnet(train, train_y, alpha = 1,family="gaussian")
+gl_model<-glmnet(train, train_y, alpha = 1,"binomial")
 
 plot_glmnet(gl_model)
 
