@@ -13,10 +13,9 @@ data<-fread("./project/volume/data/raw/data.csv")
 party<-data$party
 data$party<-NULL
 
-j_data<-data.frame(lapply(data, jitter,factor=0.01))
 
 # do a pca
-pca<-prcomp(j_data)
+pca<-prcomp(data)
 
 # look at the percent variance explained by each pca
 screeplot(pca)
