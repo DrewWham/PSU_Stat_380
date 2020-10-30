@@ -14,10 +14,10 @@ data<-fread("./project/volume/data/raw/data.csv")
 party<-data$party
 data$party<-NULL
 
-j_data<-data.frame(lapply(data, jitter,factor=0.01))
+
 
 # do a pca
-pca<-prcomp(j_data)
+pca<-prcomp(data)
 
 # look at the percent variance explained by each pca
 screeplot(pca)
@@ -54,7 +54,7 @@ ggplot(pca_dt,aes(x=PC1,y=PC2,col=party))+geom_point()
 # run t-sne on the PCAs, note that if you already have PCAs you need to set pca=F or it will run a pca again. 
 # pca is built into Rtsne, ive run it seperatly for you to see the internal steps
 
-tsne<-Rtsne(pca_dt,pca = F,perplexity=5)
+tsne<-Rtsne(pca_dt,pca = F,perplexity=5,check_duplicates = F)
 
 # grab out the coordinates
 tsne_dt<-data.table(tsne$Y)
