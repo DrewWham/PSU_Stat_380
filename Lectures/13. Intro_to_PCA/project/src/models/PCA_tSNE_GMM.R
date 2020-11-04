@@ -87,28 +87,6 @@ ggplot(del_k_tab,aes(x=k,y=-delta_k))+geom_point()+geom_line()+
 
 
 
-##########################
-# function for picking k #
-##########################
-
-getOptK <- function(x){
-  x <- abs(x)
-  max_delta_k_pos <- which.max(x)
-  max_delta_k <- max(na.omit(x))
-  n2eval<-(length(x) - max_delta_k_pos) - 2
-  for(i in max_delta_k_pos:(max_delta_k_pos+n2eval)){
-    if(x[max_delta_k_pos + 1]/max_delta_k < 0.15 & x[max_delta_k_pos + 2]/max_delta_k < 0.15 & x[max_delta_k_pos + 3]/max_delta_k < 0.15){
-    }else{
-      max_delta_k_pos <- max_delta_k_pos + 1
-    }
-  }
-  max_delta_k_pos
-}
-
-
-# You may visualy inspect the plot to pick the optimal k, I have writen a function that expresses the logic that I use
-opt_k<-getOptK(delta_k)
-
 opt_k<-2
 
 # now we run the model with our chosen k value
