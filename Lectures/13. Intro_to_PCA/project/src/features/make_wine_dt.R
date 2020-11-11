@@ -1,3 +1,4 @@
+# Data found at: https://www.kaggle.com/danielpanizzo/wine-quality
 library(data.table)
 
 
