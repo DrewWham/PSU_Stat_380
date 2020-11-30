@@ -24,7 +24,7 @@ DT[is.na(DT)]<-0
 
 m_DT<-melt(DT,id=c("id","order"),variable.name = "category")
 m_DT<-m_DT[value==1][order(order)][,.(id,category)]
-m_DT$category<-as.integer(m_DT$category)
+m_DT$category<-as.integer(m_DT$category)-1
 
 
 
