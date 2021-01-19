@@ -5,9 +5,7 @@
 #### Dr. Drew Wham 
     Office: 22c Sheilds Building
     email: fcw5014 [at] psu [dot] edu
-    Office Hours (22c Sheilds Building):
-    Wed 4:00-5:00
-    Friday 4:00-5:00
+    Office Hours Zoom
     By appointment
     
 
@@ -15,7 +13,7 @@
 
 ### Class Time & Location
 Section 1:  
-Time/Day: MoWeFr 1:25PM - 2:15PM
+Time/Day: TR 1:35PM - 2:50PM
 Location: zoom
 
 ### Course Recordings
