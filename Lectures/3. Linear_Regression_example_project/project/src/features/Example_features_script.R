@@ -4,7 +4,7 @@ set.seed(77)
 #you will need to place the data into the "./project/volume/data/raw/" folder
 DT<-fread('./project/volume/data/raw/2008.csv')
 
-pairs(DepDelay~CRSDepTime+Distance,data=DT[1:1000,])
+pairs(DepDelay~CRSDepTime+DayofMonth,data=DT[1:1000,])
 
 DT[is.na(DT$DepDelay)]$DepDelay<-0
 

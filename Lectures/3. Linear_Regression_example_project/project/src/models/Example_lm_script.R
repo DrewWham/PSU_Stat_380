@@ -10,7 +10,9 @@ test<-fread('./project/volume/data/interim/test.csv')
 train_y<-train$DepDelay
 test_y<-test$DepDelay
 
-dummies <- dummyVars(DepDelay ~ ., data = train)
+master<-rbind(train,test)
+
+dummies <- dummyVars(DepDelay ~ ., data = master)
 train<-predict(dummies, newdata = train)
 test<-predict(dummies, newdata = test)
 
@@ -22,7 +24,7 @@ test<-data.table(test)
 
 
 #fit a linear model
-lm_model<-lm(DepDelay~.,data=train)
+lm_model<-lm(DepDelay~ .,data=train)
 
 
 #assess model
