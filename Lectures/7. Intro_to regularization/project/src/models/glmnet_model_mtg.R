@@ -8,8 +8,8 @@ library(lubridate)
 
 
 #read in data, notice the path will always look like this because the assumed working directory is the repo level folder
-train<-fread("./project/volume/data/interim/train_bs.csv")
-test<-fread("./project/volume/data/interim/test_bs.csv")
+train<-fread("./project/volume/data/interim/train.csv")
+test<-fread("./project/volume/data/interim/test.csv")
 example_sub<-fread("./project/volume/data/raw/example_submission.csv")
 
 ##########################
@@ -28,11 +28,6 @@ drops<- c('id','future_date','current_date')
 train<-train[, !drops, with = FALSE]
 test<-test[, !drops, with = FALSE]
 
-
-#keep<-c("current_price","future_price","rarity","Land","BS_199","BS_200","BS_201")
-
-#train<-train[, keep, with = FALSE]
-#test<-test[, keep, with = FALSE]
 
 #save the response var because dummyVars will remove
 train_y<-train$future_price
@@ -112,4 +107,4 @@ example_sub$future_price<-pred
 
 
 #now we can write out a submission
-fwrite(example_sub,"./project/volume/data/processed/submit_17.csv")
+fwrite(example_sub,"./project/volume/data/processed/submit.csv")
