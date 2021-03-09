@@ -74,5 +74,5 @@ test$future_price<-NULL
 # write out to interim #
 ########################
 
-fwrite(train,"./project/volume/data/interim/train_v1.csv")
-fwrite(test,"./project/volume/data/interim/test_v1.csv")
+fwrite(train,"./project/volume/data/interim/train_mtg.csv")
+fwrite(test,"./project/volume/data/interim/test_mtg.csv")
