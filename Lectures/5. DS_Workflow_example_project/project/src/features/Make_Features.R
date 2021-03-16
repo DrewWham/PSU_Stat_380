@@ -2,20 +2,20 @@ library(data.table)
 set.seed(77)
 
 
-test<-fread('./project/volume/data/raw/examp_sub.csv')
-season<-fread('./project/volume/data/raw/RegularSeasonDetailedResults.csv')
-tourney<-fread('./project/volume/data/raw/NCAATourneyDetailedResults.csv')
-ranks<-fread('./project/volume/data/raw/MasseyOrdinals_thru_2019_day_128.csv')
+test<-fread('./project/volume/data/raw/MSampleSubmissionStage2.csv')
+season<-fread('./project/volume/data/raw/MRegularSeasonDetailedResults.csv')
+tourney<-fread('./project/volume/data/raw/MNCAATourneyDetailedResults.csv')
+ranks<-fread('./project/volume/data/raw/MMasseyOrdinals.csv')
 
 
 
 # Clean test
 
-test<-data.table(matrix(unlist(strsplit(test$id,"_")),ncol=2,byrow=T))
-setnames(test,c("V1","V2"),c("team_1","team_2"))
+test<-data.table(matrix(unlist(strsplit(test$ID,"_")),ncol=3,byrow=T))
+setnames(test,c("V1","V2","V3"),c("Season","team_1","team_2"))
 
-test$Season<-2019
-test$DayNum<-133
+#test$Season<-2019
+test$DayNum<-135
 
 test<-test[,.(team_1,team_2,Season,DayNum)]
 
@@ -38,7 +38,9 @@ master$team_2<-as.character(master$team_2)
 ranks$DayNum<-ranks$RankingDayNum+1
 
 
-system_lst<-c("POM","PIG","SAG","MOR","DOK")
+system_lst<-c("POM","SAG","MOR","DOK")
+
+master$Season<-as.integer(master$Season)
 
 for (i in 1:length(system_lst)){
 
@@ -73,10 +75,9 @@ for (i in 1:length(system_lst)){
 
 master<-master[order(Season,DayNum)]
 
-master<-master[,.(team_1,team_2,POM_dif,PIG_dif, SAG_dif,MOR_dif,DOK_dif,result)]
+master<-master[,.(team_1,team_2,POM_dif, SAG_dif,MOR_dif,DOK_dif,result)]
 
 master<-master[!is.na(master$POM_dif)]
-master<-master[!is.na(master$PIG_dif)]
 master<-master[!is.na(master$SAG_dif)]
 master<-master[!is.na(master$MOR_dif)]
 master<-master[!is.na(master$DOK_dif)]
@@ -89,7 +90,6 @@ train_a<-train[rand_inx,]
 train_b<-train[!rand_inx,]
 
 train_b$result<-0
-train_b$PIG_dif<-train_b$PIG_dif*-1
 train_b$SAG_dif<-train_b$SAG_dif*-1
 train_b$MOR_dif<-train_b$MOR_dif*-1
 train_b$DOK_dif<-train_b$DOK_dif*-1
@@ -103,6 +103,8 @@ fwrite(train,'./project/volume/data/interim/train.csv')
 
 
 ggplot(train,aes(x=POM_dif,fill=as.factor(result)))+geom_density()
+
+
 
 
 
