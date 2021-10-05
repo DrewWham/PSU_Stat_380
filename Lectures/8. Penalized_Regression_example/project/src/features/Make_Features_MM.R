@@ -1,7 +1,7 @@
 library(data.table)
 set.seed(77)
 
-#data from https://www.kaggle.com/t/125072c2e78d4a1bb812cbd4d5b2d670
+#data from https://www.kaggle.com/t/5c9cd23fa8e24861a574bd008bc3df76
 
 test<-fread('./project/volume/data/raw/example_sub_MM.csv')
 season<-fread('./project/volume/data/raw/season_MM.csv')
