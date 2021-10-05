@@ -1,6 +1,8 @@
 library(data.table)
 set.seed(77)
 
+#data from https://www.kaggle.com/t/125072c2e78d4a1bb812cbd4d5b2d670
+
 test<-fread('./project/volume/data/raw/example_sub_MM.csv')
 season<-fread('./project/volume/data/raw/season_MM.csv')
 tourney<-fread('./project/volume/data/raw/tourney_MM.csv')
