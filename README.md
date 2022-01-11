@@ -5,7 +5,7 @@
 #### Dr. Drew Wham 
     Office: 22c Sheilds Building
     email: fcw5014 [at] psu [dot] edu
-    Office Hours Zoom
+    Office Hours Zoom Friday 3pm
     By appointment
     
 
@@ -14,7 +14,7 @@
 ### Class Time & Location
 Section 1:  
 Time/Day: TR 1:35PM - 2:50PM
-Location: zoom
+Location: zoom 
 
 ### Course Recordings
 As part of this course experience, we will experiment with recording the class meetings using Zoom (https://psu.zoom.us). 
