@@ -1,2 +1,2 @@
-source("./project/src/features/Get_avgs.R")
-source("./project/src/features/Use_avg_model.R")
+source("./project/src/features/Example_features_script.R")
+source("./project/src/models/Example_flights_null_model.R")
