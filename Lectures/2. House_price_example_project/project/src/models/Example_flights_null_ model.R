@@ -14,31 +14,43 @@ test<-fread('./project/volume/data/interim/test.csv')
 
 avg_delay<-mean(train$DepDelay)
 
-test$Null_model<-avg_delay
+test$DepDelay<-avg_delay
 
+fwrite(test[,.(id,DepDelay)],'./project/volume/data/processed/Null_model.csv')
 
-# using the metrics package here because my dataset isnt on kaggle, but this part would be done for you by submitting to the LB
-rmse(test$DepDelay,test$Null_model)
+test$DepDelay<-NULL
+
+#This solution file can be tested on kaggle https://www.kaggle.com/t/8c4f411c42c84d45add3a44cbd516046
 
 
 #group by airport first to make a little more interesting model
 
-origin_delay<-train[,.(ap_avg_delay=mean(DepDelay)),by=Origin]
+origin_delay<-train[,.(DepDelay=mean(DepDelay)),by=Origin]
 
 setkey(origin_delay,Origin)
 setkey(test,Origin)
 
 test<-merge(test,origin_delay, all.x=T)
 
+test<-test[order(id)]
 
-# using the metrics package here because my dataset isnt on kaggle, but this part would be done for you by submitting to the LB
-rmse(test$DepDelay,test$ap_avg_delay)
+fwrite(test[,.(id,DepDelay)],'./project/volume/data/processed/Origin_avg.csv')
+
+test$DepDelay<-NULL
+
+# group by Carrier and Origin
+
+originCarrier_delay<-train[,.(DepDelay=mean(DepDelay)),by=c('Origin','UniqueCarrier')]
+
+setkey(originCarrier_delay,Origin, UniqueCarrier)
+setkey(test,Origin,UniqueCarrier)
+
+test<-merge(test,originCarrier_delay, all.x=T)
+
+test<-test[order(id)]
+
+fwrite(test[,.(id,DepDelay)],'./project/volume/data/processed/OriginCarrier_avg.csv')
 
 
-
-
-
-# in my example I do not need to make a submit file, but if I did I would do something like this
-fwrite(test[,.(ap_avg_delay)],"./project/volume/data/processed/submit.csv")
 
 
