@@ -2,8 +2,8 @@
 library(data.table)
 library(caret)
 
-
-
+#files can be found here:
+#https://www.kaggle.com/t/1918772abc63486fb21a3347ca7e5748
 #read in data, notice the path will always look like this because the assumed working directory is the repo level folder
 train<-fread("./project/volume/data/raw/start_train.csv")
 test<-fread("./project/volume/data/raw/start_test.csv")
