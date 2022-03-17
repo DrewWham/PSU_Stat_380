@@ -9,20 +9,20 @@ library(xgboost)
 
 
 #read in data, notice the path will always look like this because the assumed working directory is the repo level folder
-test<-fread("./project/volume/data/interim/test.csv")
-train<-fread("./project/volume/data/interim/train.csv")
+test<-fread("./project/volume/data/interim/test_concrete.csv")
+train<-fread("./project/volume/data/interim/train_concrete.csv")
 
 
 
 ##########################
 # Prep Data for Modeling #
 ##########################
-y.train<-train$DepDelay
-y.test<-test$DepDelay
+y.train<-train$Strength
+y.test<-test$Strength
 
 # work with dummies
 
-dummies <- dummyVars(DepDelay~ ., data = train)
+dummies <- dummyVars(Strength~ ., data = train)
 x.train<-predict(dummies, newdata = train)
 x.test<-predict(dummies, newdata = test)
 
@@ -39,11 +39,11 @@ hyper_perm_tune<-NULL
 ########################
 
 param <- list(  objective           = "reg:linear",
-                gamma               =0.02,
+                gamma               =0.00,
                 booster             = "gbtree",
                 eval_metric         = "rmse",
                 eta                 = 0.02,
-                max_depth           = 5,
+                max_depth           = 15,
                 min_child_weight    = 1,
                 subsample           = 1.0,
                 colsample_bytree    = 1.0,
