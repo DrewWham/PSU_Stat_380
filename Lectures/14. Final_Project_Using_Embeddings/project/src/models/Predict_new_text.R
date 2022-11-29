@@ -1,9 +1,9 @@
-library(httr)
 library(data.table)
 library(Rtsne)
 library(ggplot2)
 library(optparse)
 library(xgboost)
+library(reticulate)
 
 # make an options parsing list
 option_list = list(
@@ -20,15 +20,21 @@ new_text<-opt$text
 #new_text<- "How much would you pay for a 2020 model toyota tundra with the base package out the door?"
 
 pca.model<-readRDS("./project/volume/models/pca.model")
-xgb.model<-readRDS("./project/volume/models/XGBm.model")
+xgb.model<-readRDS("./project/volume/models/xgb.model")
 ex_sub<-fread("./project/volume/data/raw/examp_sub.csv")
 
+tf<-import("tensorflow")
+hub<-import("tensorflow_hub")
+np<-import("numpy")
+
+module_url <- "https://tfhub.dev/google/universal-sentence-encoder/4"
+model = hub$load(module_url)
+
+set.seed(3)
+
+
 getEmbeddings<-function(text){
-  input <- list(
-    instances =list( text)
-  )
-  res <- POST("https://dsalpha.vmhost.psu.edu/api/use/v1/models/use:predict", body = input,encode = "json", verbose())
-  emb<-unlist(content(res)$predictions)
+  emb<-np$array(model(list(text)))
   emb
 }
 
@@ -36,7 +42,7 @@ new_text_emb<-getEmbeddings(new_text)
 
 
 
-new_text_pca<-predict(pca.model,newdata=as.data.frame(t(new_text_emb)))
+new_text_pca<-predict(pca.model,newdata=as.data.frame(new_text_emb))
 
 new_text_pca<-data.table(new_text_pca)
 
@@ -62,4 +68,3 @@ output<-output[order(-probability)]
 output$id<-NULL
 
 print(output)
-
