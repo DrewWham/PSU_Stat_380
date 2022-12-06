@@ -5,6 +5,9 @@ library(optparse)
 library(xgboost)
 library(reticulate)
 
+#deploy this model by wrapping functions in Rplumber:
+#https://www.rplumber.io/
+
 
 new_text<- "How much would you pay for a 2020 model toyota tundra with the base package out the door?"
 
