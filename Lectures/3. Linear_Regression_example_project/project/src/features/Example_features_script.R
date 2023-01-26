@@ -8,7 +8,7 @@ pairs(DepDelay~CRSDepTime+DayofMonth,data=DT[1:1000,])
 
 DT[is.na(DT$DepDelay)]$DepDelay<-0
 
-sub_DT<-DT[,.(UniqueCarrier,CRSDepTime,Distance,DepDelay)]
+sub_DT<-DT[,.(UniqueCarrier,Origin,CRSDepTime,Distance,DepDelay)]
 
 # here I divide the data into train and test so that I'm working on a similar problem as all of you
 # note that you do not need to do this on your dataset
