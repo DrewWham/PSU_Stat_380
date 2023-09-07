@@ -6,9 +6,12 @@ set.seed(77)
 
 train<-fread('./project/volume/data/interim/train.csv')
 test<-fread('./project/volume/data/interim/test.csv')
+submit<-fread('./project/volume/data/raw/solution.csv')
+
+test_y<-submit$DepDelay
 
 train_y<-train$DepDelay
-test_y<-test$DepDelay
+test$DepDelay<-0
 
 master<-rbind(train,test)
 
@@ -36,18 +39,18 @@ summary(lm_model)
 saveRDS(dummies,"./project/volume/models/DepDelay_lm.dummies")
 saveRDS(lm_model,"./project/volume/models/DepDelay_lm.model")
 
-test$pred<-predict(lm_model,newdata = test)
+test$DepDelay<-predict(lm_model,newdata = test)
 
 #our file needs to follow the example submission file format. So we need to only have the Id and saleprice column and
 #we also need the rows to be in the correct order
+submit$DepDelay<-test$DepDelay
 
-submit<-test[,.(pred)]
 
 #now we can write out a submission
 fwrite(submit,"./project/volume/data/processed/submit_lm.csv")
 
-rmse(test_y,test$pred)
-
 #null model rmse
 rmse(test_y,mean(train_y))
+
+rmse(test_y,test$DepDelay)
 
