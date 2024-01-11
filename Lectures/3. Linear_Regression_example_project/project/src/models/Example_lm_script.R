@@ -2,7 +2,7 @@ library(caret) #http://topepo.github.io/caret/index.html
 library(data.table)
 library(Metrics)
 
-set.seed(77)
+set.seed(770)
 
 train<-fread('./project/volume/data/interim/train.csv')
 test<-fread('./project/volume/data/interim/test.csv')
@@ -14,7 +14,7 @@ train_y<-train$DepDelay
 test$DepDelay<-0
 
 master<-rbind(train,test)
-
+#test
 dummies <- dummyVars(DepDelay ~ ., data = master)
 train<-predict(dummies, newdata = train)
 test<-predict(dummies, newdata = test)
