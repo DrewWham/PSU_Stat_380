@@ -3,9 +3,9 @@
 ## Course Information
 ### Teaching Team
 #### Dr. Drew Wham 
-    Office: 22c Sheilds Building
+    Office: 526 Elliot Building
     email: fcw5014 [at] psu [dot] edu
-    Office Hours Zoom Friday 3:30-4:30pm
+    Office Hours Zoom Friday 3:00-4:00pm
     By appointment
     
 
@@ -63,11 +63,11 @@ Most issues about classroom activities can be posted to Kaggle, but you should u
 ### Grading
 Learning outcomes will be assessed based on performance in each of the following categories accompanied by their impact on the overall grade:
 
-* 30% Weekly Activities (in-class and HW)
-* 20% Performance on Weekly Activities
+* 30% Weekly Activities 
+* 20% Data Wrangling Exam
 * 10% Reading Quizzes
-* 20% Midterm Project Results
-* 20% Final Project Results
+* 20% Midterm Project 
+* 20% Final Project 
 
 
 
