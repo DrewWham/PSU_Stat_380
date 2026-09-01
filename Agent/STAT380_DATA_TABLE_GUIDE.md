@@ -1,12 +1,40 @@
 # STAT 380 `data.table` Guide
 
-This document describes the default `data.table` style used in STAT 380.
+This document defines the preferred `data.table` practices used in STAT 380.
 
 The goal is not to write the shortest possible R code. The goal is to write code that is **clear enough for a student to read, explain, debug, and modify**.
 
 `data.table` is compact by design, but compactness should not come at the expense of understanding.
 
-When several equivalent approaches are available, prefer the one that makes the major steps of the analysis visible.
+When several equivalent approaches are available, prefer the one that makes the major data operation visible.
+
+A central course objective is to build fluency with the core vocabulary of `data.table`. When a task can be expressed clearly with a standard `data.table` function or pattern, prefer that approach over a generic base-R alternative.
+
+---
+
+# Preferred `data.table` Toolkit
+
+The following functions and patterns should be treated as the primary toolkit for routine data manipulation in STAT 380:
+
+- `fread()` — read tabular data
+- `fwrite()` — write tabular data
+- `DT[i, j, by]` — filter, select, calculate, and group
+- `:=` — add or modify columns by reference
+- `.SD` and `.SDcols` — work across selected columns
+- `.N` — row counts within groups
+- `merge()` — readable table joins
+- `melt()` — reshape wide data to long form
+- `dcast()` — reshape long data to wide form
+- `setorder()` — reorder rows
+- `setnames()` — rename columns
+- `rbindlist()` — combine multiple tables by rows
+- `copy()` — explicitly preserve an object before by-reference modification
+
+When helping a student solve a data-manipulation problem, first consider whether one of these standard `data.table` tools directly expresses the task.
+
+Avoid reaching first for generic base-R operations such as `apply()` when a clear `data.table` solution exists.
+
+`lapply()` is an important exception: it is commonly used inside `data.table`, especially with `.SD` and `.SDcols`, and is appropriate when it makes the operation clearer.
 
 ---
 
@@ -25,8 +53,6 @@ Do not assume that `data.table` is already attached because it was loaded earlie
 ## 2. Read Data with `fread()`
 
 Use `fread()` for tabular source files when appropriate.
-
-For example:
 
 ```r
 train <- fread(
@@ -57,15 +83,13 @@ tmp
 data2
 ```
 
-unless the meaning is genuinely obvious from a very small local context.
+unless the meaning is genuinely obvious in a very small local context.
 
 ---
 
 ## 3. Write Data with `fwrite()`
 
 Use `fwrite()` when writing tabular outputs.
-
-For example:
 
 ```r
 fwrite(
@@ -102,8 +126,6 @@ Not every operation needs all three parts.
 
 For readability, STAT 380 code should often place logically distinct pieces on separate lines.
 
-For example:
-
 ```r
 summary_dt <- train[
   sale_price > 0,
@@ -116,7 +138,7 @@ summary_dt <- train[
 ]
 ```
 
-This is generally preferable in this course to compressing the same logic into one dense line.
+This is generally preferable to compressing the same logic into one dense line.
 
 ---
 
@@ -124,15 +146,13 @@ This is generally preferable in this course to compressing the same logic into o
 
 Filter rows by placing a logical condition in the `i` position.
 
-For example:
-
 ```r
 adults <- people[
   age >= 18
 ]
 ```
 
-Multiple conditions can be written clearly across lines:
+Multiple conditions can be written across lines:
 
 ```r
 high_value <- houses[
@@ -150,8 +170,6 @@ For complex filters, favor readability over minimizing line count.
 
 Select columns using `.()`.
 
-For example:
-
 ```r
 model_data <- train[
   ,
@@ -164,17 +182,13 @@ model_data <- train[
 ]
 ```
 
-This makes the selected variables visible and easy to compare with a project rubric or modeling plan.
-
-A shorter form may work, but explicit column lists are often easier for students to understand and defend.
+This makes selected variables visible and easy to compare with a project rubric or modeling plan.
 
 ---
 
-## 6. Selecting Columns Programmatically
+## 6. Selecting Columns Programmatically with `.SDcols`
 
 When column names are stored in a character vector, use `.SDcols`.
-
-For example:
 
 ```r
 predictor_names <- c(
@@ -190,15 +204,13 @@ x <- train[
 ]
 ```
 
-This is preferable to clever or opaque column-selection tricks when the purpose is to construct a model matrix or predictor set.
+This is preferable to opaque column-selection tricks when the purpose is to construct a model matrix or predictor set.
 
 ---
 
 ## 7. Creating New Columns with `:=`
 
 Use `:=` to add or modify columns by reference.
-
-For example:
 
 ```r
 train[
@@ -227,8 +239,6 @@ When the transformation is important to the analysis, give the new variable a de
 
 `:=` modifies a `data.table` by reference.
 
-For example:
-
 ```r
 train[
   ,
@@ -237,13 +247,6 @@ train[
 ```
 
 changes `train` itself.
-
-This is different from many base R and tidyverse operations that typically return a new object.
-
-Students should understand whether an operation:
-
-- changes the existing object; or
-- creates a new object.
 
 If preserving the original object matters, make an explicit copy:
 
@@ -263,8 +266,6 @@ Do not use `copy()` everywhere automatically. Use it when preserving the origina
 ## 9. Grouped Summaries
 
 Use `by` for grouped calculations.
-
-For example:
 
 ```r
 neighborhood_summary <- train[
@@ -300,8 +301,6 @@ V3
 
 Group by multiple variables using `.()`.
 
-For example:
-
 ```r
 summary_dt <- train[
   ,
@@ -324,8 +323,6 @@ Use line breaks when they make the grouping structure easier to see.
 
 Inside a `data.table` expression, `.N` represents the number of rows in the current group.
 
-For example:
-
 ```r
 counts <- train[
   ,
@@ -336,17 +333,13 @@ counts <- train[
 ]
 ```
 
-Outside grouped operations, `.N` can also be used to refer to the current number of rows within the expression.
-
 ---
 
-## 12. `.SD` and `.SDcols`
+## 12. `.SD`, `.SDcols`, and `lapply()`
 
 `.SD` means "Subset of Data."
 
 It is especially useful when applying the same operation across a selected group of columns.
-
-For example:
 
 ```r
 numeric_columns <- c(
@@ -366,15 +359,292 @@ summary_dt <- train[
 ]
 ```
 
-Because `.SD` can become difficult to read when overused, prefer it when it clearly reduces repetition rather than simply making code shorter.
+This is an idiomatic `data.table` use of `lapply()`.
+
+Prefer this pattern when the same operation must be applied to a clearly defined set of columns.
+
+Do not replace a direct `data.table` operation with `apply()` merely because `apply()` can technically solve the problem.
+
+For example, if the goal is a grouped summary, use `by`. If the goal is reshaping, use `melt()` or `dcast()`. If the goal is joining, use `merge()` or an explicit `data.table` join.
 
 ---
 
-## 13. Renaming Columns
+# Joining Tables
 
-Use `setnames()` when renaming columns.
+## 13. Prefer `merge()` for Readable General Joins
+
+For many STAT 380 tasks, `merge()` is the preferred join function because the two tables, key, and join type are explicit.
+
+For a basic inner join:
+
+```r
+combined <- merge(
+  students,
+  scores,
+  by = "student_id"
+)
+```
+
+For a left join:
+
+```r
+combined <- merge(
+  students,
+  scores,
+  by = "student_id",
+  all.x = TRUE
+)
+```
+
+For a full join:
+
+```r
+combined <- merge(
+  students,
+  scores,
+  by = "student_id",
+  all = TRUE
+)
+```
+
+Students should be able to explain:
+
+- which two tables are being joined;
+- which variable is the key;
+- which table's rows are being preserved;
+- whether duplicate keys may multiply rows.
+
+---
+
+## 14. Joining on Differently Named Keys
+
+Use `by.x` and `by.y` when the key columns have different names.
+
+```r
+combined <- merge(
+  people,
+  gifts,
+  by.x = "person_id",
+  by.y = "donor_id",
+  all.x = TRUE
+)
+```
+
+This is often easier for students to read than compact non-equi or keyed join syntax.
+
+---
+
+## 15. Explicit `data.table` Join Syntax Is Also Valid
+
+The bracket join syntax is an important `data.table` feature:
+
+```r
+result <- customers[
+  purchases,
+  on = "customer_id"
+]
+```
+
+It may be useful when it clearly expresses the intended operation.
+
+However, when a student is still learning joins, `merge()` is often easier to read and explain.
+
+Favor readability over showcasing compact syntax.
+
+---
+
+## 16. Avoid Accidental Row Multiplication
+
+Before joining, consider whether the key is unique.
+
+Useful checks include:
+
+```r
+nrow(people)
+```
+
+```r
+people[
+  ,
+  uniqueN(person_id)
+]
+```
+
+and:
+
+```r
+people[
+  ,
+  .N,
+  by = person_id
+][
+  N > 1
+]
+```
+
+If a many-to-many join is intended, it should be understood and justified rather than discovered accidentally after the row count expands.
+
+---
+
+# Reshaping Data
+
+## 17. Use `melt()` for Wide-to-Long Reshaping
+
+Use `melt()` when columns represent repeated measurements, categories, time points, or related variables that should become rows.
+
+Example wide data:
+
+```text
+student_id   exam_1   exam_2   exam_3
+1            80       84       88
+2            74       79       85
+```
+
+Convert to long form:
+
+```r
+long_scores <- melt(
+  scores,
+  id.vars = "student_id",
+  measure.vars = c(
+    "exam_1",
+    "exam_2",
+    "exam_3"
+  ),
+  variable.name = "exam",
+  value.name = "score"
+)
+```
+
+Result:
+
+```text
+student_id   exam     score
+1            exam_1   80
+1            exam_2   84
+1            exam_3   88
+2            exam_1   74
+...
+```
+
+Students should understand:
+
+- `id.vars` stay as identifier columns;
+- `measure.vars` are collapsed into rows;
+- `variable.name` names the new column containing the original column names;
+- `value.name` names the new value column.
+
+---
+
+## 18. Use `dcast()` for Long-to-Wide Reshaping
+
+Use `dcast()` when values stored across rows should become separate columns.
+
+Starting from:
+
+```text
+student_id   exam     score
+1            exam_1   80
+1            exam_2   84
+1            exam_3   88
+```
+
+reshape to wide form:
+
+```r
+wide_scores <- dcast(
+  long_scores,
+  student_id ~ exam,
+  value.var = "score"
+)
+```
+
+Students should be able to read:
+
+```text
+student_id ~ exam
+```
+
+as:
+
+> one row per `student_id`, with separate columns created from values of `exam`.
+
+---
+
+## 19. Aggregation During `dcast()`
+
+Sometimes more than one row exists for a given row/column combination.
+
+In that case, `dcast()` may require an aggregation function.
 
 For example:
+
+```r
+wide_summary <- dcast(
+  long_data,
+  student_id ~ category,
+  value.var = "score",
+  fun.aggregate = mean
+)
+```
+
+Use aggregation intentionally.
+
+Do not add `fun.aggregate` merely to silence a warning without understanding why duplicate combinations exist.
+
+---
+
+## 20. Prefer `melt()` and `dcast()` Over Manual Reshaping
+
+When a task is fundamentally about changing between wide and long form, prefer `melt()` and `dcast()` over:
+
+- manually creating many columns;
+- loops that rebuild the table;
+- `apply()`-based reshaping;
+- custom row-by-row manipulation.
+
+These functions make the structural intention visible.
+
+---
+
+# Combining Tables by Rows
+
+## 21. Use `rbindlist()` for Multiple Tables
+
+When combining multiple compatible tables by rows, prefer `rbindlist()`.
+
+```r
+all_years <- rbindlist(
+  list(
+    data_2024,
+    data_2025,
+    data_2026
+  )
+)
+```
+
+If columns differ:
+
+```r
+all_years <- rbindlist(
+  list(
+    data_2024,
+    data_2025,
+    data_2026
+  ),
+  fill = TRUE
+)
+```
+
+This is preferable to repeatedly calling `rbind()` in a loop.
+
+---
+
+# Renaming and Ordering
+
+## 22. Renaming Columns with `setnames()`
+
+Use `setnames()` when renaming columns.
 
 ```r
 setnames(
@@ -400,15 +670,13 @@ setnames(
 )
 ```
 
-Make renaming operations easy to identify rather than hiding them inside a long chain of transformations.
+Make renaming operations easy to identify rather than hiding them inside a long transformation.
 
 ---
 
-## 14. Ordering Rows
+## 23. Ordering Rows with `setorder()`
 
 Use `setorder()` when the intention is to reorder an existing `data.table`.
-
-For example:
 
 ```r
 setorder(
@@ -417,17 +685,15 @@ setorder(
 )
 ```
 
-This modifies `train` by reference.
+This modifies the table by reference.
 
 If preserving the previous order matters, make a copy first.
 
 ---
 
-## 15. Missing Values
+# Missing Values
 
-Use explicit missing-value logic.
-
-Examples:
+## 24. Identify Missing Values Explicitly
 
 ```r
 missing_income <- people[
@@ -453,15 +719,13 @@ mean_income <- people[
 ]
 ```
 
-Do not add `na.rm = TRUE` automatically without considering what missing values mean in the current problem.
+Do not add `na.rm = TRUE` automatically without considering what missingness means in the problem.
 
 ---
 
-## 16. Replacing Missing Values
+## 25. Replace Missing Values Explicitly
 
-When replacement is statistically appropriate, make the operation explicit.
-
-For example:
+When replacement is statistically appropriate:
 
 ```r
 median_income <- median(
@@ -475,106 +739,32 @@ train[
 ]
 ```
 
-This is generally more readable for students than embedding the calculation inside a highly compressed expression.
+This is generally easier for students to understand than hiding the calculation inside a highly compressed expression.
 
-Remember that imputation choices can create data leakage if information from validation or test data is used improperly.
-
----
-
-# Joins
-
-## 17. Prefer Readable Joins
-
-`data.table` supports powerful join syntax, but joins can be confusing when written too compactly.
-
-When readability matters, use explicit `on =` arguments and clearly named objects.
-
-For example:
-
-```r
-result <- customers[
-  purchases,
-  on = "customer_id"
-]
-```
-
-Before using a join, students should understand:
-
-- which table is on the left;
-- which table is being matched;
-- what the join key is;
-- what rows are expected to remain.
-
-If the direction of a join is not obvious, explain it in a comment or use a more explicit approach.
-
----
-
-## 18. Joining on Differently Named Columns
-
-Use a named `on` mapping.
-
-For example:
-
-```r
-result <- people[
-  gifts,
-  on = c(
-    "person_id = donor_id"
-  )
-]
-```
-
-This makes the relationship between the two key columns visible.
-
----
-
-## 19. Avoid Accidental Row Multiplication
-
-Before joining, consider whether the key is unique in each table.
-
-Useful checks include:
-
-```r
-people[
-  ,
-  uniqueN(person_id)
-]
-```
-
-and:
-
-```r
-nrow(people)
-```
-
-If a many-to-many join is intended, it should be understood and justified rather than discovered accidentally after the row count expands.
+Remember that imputation can create data leakage if statistics are calculated using validation or test information inappropriately.
 
 ---
 
 # Working with Categories
 
-## 20. Character and Factor Variables
-
-Do not assume that every character column should be converted to a factor.
+## 26. Character Does Not Automatically Mean Categorical
 
 A character variable may represent:
 
-- a true categorical feature;
+- a true category;
 - an identifier;
 - a name;
 - a URL;
 - free text;
-- a code that only looks numeric or categorical.
+- a code.
 
 Inspect the project context and data profile before deciding how a variable should be represented.
 
 ---
 
-## 21. Inspect Category Values
+## 27. Inspect Category Values
 
-For a reasonably sized categorical variable, inspect the observed values.
-
-For example:
+For a reasonably sized categorical variable:
 
 ```r
 train[
@@ -585,29 +775,28 @@ train[
 ]
 ```
 
-or count them:
+To inspect frequencies:
 
 ```r
-train[
+category_counts <- train[
   ,
   .(
     n = .N
   ),
   by = neighborhood
-][
-  order(-n)
 ]
+
+setorder(
+  category_counts,
+  -n
+)
 ```
 
-This is especially useful for detecting spelling differences, rare categories, unexpected values, and missing categories.
+This separates the summary from the ordering step and is easier to explain than nesting multiple operations.
 
 ---
 
-## 22. Recode Categories Explicitly
-
-When categories need to be combined or corrected, make the mapping visible.
-
-For example:
+## 28. Recode Categories Explicitly
 
 ```r
 train[
@@ -619,19 +808,17 @@ train[
 ]
 ```
 
-For more substantial recoding, it may be clearer to create a lookup table and join it rather than write many nested conditions.
+For substantial recoding, consider a lookup table and `merge()` rather than many nested conditions.
 
 ---
 
 # Training and Test Data
 
-## 23. Apply Compatible Transformations
+## 29. Apply Compatible Transformations
 
 Training and test data often require the same feature engineering.
 
-Prefer defining transformations clearly enough that they can be applied consistently to both datasets.
-
-For example:
+For simple transformations:
 
 ```r
 train[
@@ -645,15 +832,11 @@ test[
 ]
 ```
 
-If the transformation becomes complex, consider putting it in a function.
+For repeated complex transformations, a function may improve consistency.
 
 ---
 
-## 24. Use Functions When They Improve Clarity
-
-Functions are useful when the same meaningful operation must be performed repeatedly.
-
-For example:
+## 30. Use Functions When They Improve Clarity
 
 ```r
 add_age_features <- function(DT) {
@@ -683,23 +866,19 @@ test <- add_age_features(test)
 
 Do not create functions merely to make simple one-time code look more sophisticated.
 
-Use a function when it reduces meaningful duplication or makes a repeated transformation safer.
+Use functions when they reduce meaningful duplication or make repeated transformations safer.
 
 ---
 
 # Model Preparation
 
-## 25. Keep the Response Variable Explicit
-
-When preparing supervised-learning data, identify the response separately.
-
-For example:
+## 31. Keep the Response Variable Explicit
 
 ```r
 response_name <- "sale_price"
 ```
 
-and define predictors explicitly:
+Define predictors explicitly:
 
 ```r
 predictor_names <- c(
@@ -725,15 +904,13 @@ y_train <- train[
 ]
 ```
 
-This is more readable for students than hiding predictor selection inside a complicated modeling call.
+This is more readable than hiding predictor selection inside a complicated model-fitting call.
 
 ---
 
-## 26. Matrix Conversion
+## 32. Matrix Conversion
 
-Some modeling packages, including `glmnet` and `xgboost`, commonly require matrix inputs.
-
-For example:
+Some modeling packages require matrix inputs.
 
 ```r
 x_train_matrix <- as.matrix(
@@ -741,7 +918,7 @@ x_train_matrix <- as.matrix(
 )
 ```
 
-Make the conversion explicit.
+Make conversion explicit.
 
 If categorical variables require encoding, handle that step intentionally and consistently between training and test data.
 
@@ -749,7 +926,7 @@ If categorical variables require encoding, handle that step intentionally and co
 
 # Readability Rules
 
-## 27. Do Not Optimize for Fewest Characters
+## 33. Do Not Optimize for Fewest Characters
 
 The following may be valid:
 
@@ -782,7 +959,7 @@ The second version is easier to:
 
 ---
 
-## 28. Use Line Breaks to Show Structure
+## 34. Use Line Breaks to Show Structure
 
 A useful default is:
 
@@ -805,8 +982,6 @@ This visually separates:
 
 Very simple operations may remain on one line when they are genuinely clearer that way.
 
-For example:
-
 ```r
 adults <- people[age >= 18]
 ```
@@ -815,11 +990,7 @@ The goal is readability, not rigid formatting.
 
 ---
 
-## 29. Prefer Explicit Intermediate Objects When Helpful
-
-It is acceptable to break a complicated task into several named steps.
-
-For example:
+## 35. Prefer Explicit Intermediate Objects When Helpful
 
 ```r
 predictor_names <- c(
@@ -845,7 +1016,7 @@ Intermediate objects are useful when their names communicate meaningful stages i
 
 ---
 
-## 30. Avoid Clever Code That Hides the Statistical Task
+## 36. Avoid Clever Code That Hides the Data Task
 
 Do not use advanced `data.table` features merely because they reduce line count.
 
@@ -856,6 +1027,7 @@ A student should be able to identify:
 - which new variables are being created;
 - what grouping is occurring;
 - how tables are being joined;
+- how data are being reshaped;
 - what data are ultimately supplied to the model.
 
 If a shorter expression makes those answers harder to see, prefer the longer expression.
@@ -864,7 +1036,7 @@ If a shorter expression makes those answers harder to see, prefer the longer exp
 
 # Debugging with `data.table`
 
-## 31. Inspect Small Pieces
+## 37. Inspect Small Pieces
 
 Useful commands include:
 
@@ -888,30 +1060,13 @@ dim(train)
 summary(train)
 ```
 
-For selected variables:
-
-```r
-train[
-  ,
-  .(
-    square_feet,
-    bedrooms,
-    sale_price
-  )
-][
-  1:10
-]
-```
-
 When something goes wrong, inspect the object immediately before the failing step.
 
 ---
 
-## 32. Check Dimensions After Major Transformations
+## 38. Check Dimensions After Major Transformations
 
-After joins, filters, or feature-building steps, verify that dimensions make sense.
-
-For example:
+After joins, filters, reshaping, or feature-building steps:
 
 ```r
 dim(train)
@@ -924,29 +1079,54 @@ nrow(train)
 ncol(train)
 ```
 
-This is particularly important after joins, where unintended duplicate matches can multiply rows.
+This is especially important after joins and casts, where unintended structure can change row or column counts.
 
 ---
 
-## 33. Check Column Names Before Modeling
-
-Before fitting a model:
+## 39. Check Column Names Before Modeling
 
 ```r
 names(model_data)
 ```
 
-and compare them with the intended predictors.
+Compare them with the intended predictors.
 
-Students should know exactly which columns enter the model rather than allowing that choice to remain implicit.
+Students should know exactly which columns enter the model.
 
 ---
 
 # Using `data.table` with the STAT 380 AI Agent
 
-## 34. Give the Agent the Relevant Context
+## 40. Treat This Guide as the Primary Data-Manipulation Reference
 
-When asking the agent for help, provide:
+When the agent answers an R data-manipulation question, it should consult this guide and prefer the approaches documented here over generic alternatives.
+
+In particular, the agent should actively consider:
+
+```text
+fread
+fwrite
+DT[i, j, by]
+:=
+.SD
+.SDcols
+.N
+merge
+melt
+dcast
+rbindlist
+setorder
+setnames
+copy
+```
+
+before reaching for a less course-aligned approach.
+
+---
+
+## 41. Give the Agent Relevant Context
+
+When asking for help, provide:
 
 - the relevant data profile;
 - the project context;
@@ -957,24 +1137,23 @@ The agent should not need the full dataset merely to help construct routine `dat
 
 ---
 
-## 35. Ask for Readable Code
-
-The agent should default to code that favors student readability.
+## 42. Ask for Readable Code
 
 Generated code should generally:
 
 - use descriptive object names;
 - use explicit relative paths;
 - show important column selections;
-- break complex `data.table` expressions across lines;
-- avoid unnecessary nested expressions;
-- explain unfamiliar `data.table` syntax when it is introduced.
+- break complex expressions across lines;
+- prefer `merge()`, `melt()`, and `dcast()` for joins and reshaping when appropriate;
+- avoid unnecessary generic `apply()` solutions;
+- explain unfamiliar syntax when it is introduced.
 
 A shorter answer is not automatically a better answer.
 
 ---
 
-## 36. Understand Generated `data.table` Code
+## 43. Understand Generated `data.table` Code
 
 Before incorporating AI-generated code, the student should be able to explain the roles of:
 
@@ -982,14 +1161,17 @@ Before incorporating AI-generated code, the student should be able to explain th
 i
 j
 by
-:= 
+:=
 .SD
 .SDcols
 .N
+merge
+melt
+dcast
 on
 ```
 
-whenever those features appear in the submitted code.
+whenever those features appear in submitted code.
 
 Students do not need to memorize every possible `data.table` feature, but they are responsible for understanding the features used in their own solution.
 
@@ -997,8 +1179,8 @@ Students do not need to memorize every possible `data.table` feature, but they a
 
 # Default Principle
 
-When choosing between two correct `data.table` solutions, prefer the one that makes the data operation easiest for a STAT 380 student to see and explain.
+When choosing between two correct solutions, prefer the one that teaches and reinforces the core `data.table` vocabulary used in STAT 380.
 
 In this course:
 
-> **Readable, reproducible code is preferred over maximally compact code.**
+> **Readable, reproducible, course-aligned `data.table` code is preferred over maximally compact or generically convenient R code.**
