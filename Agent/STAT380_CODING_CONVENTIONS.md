@@ -44,21 +44,40 @@ Do not assume that code is run from inside the generic `project/` folder.
 
 ---
 
-## 2. Primary Language and Style
+## 2. Primary Language and Data-Manipulation Framework
 
 STAT 380 projects are developed primarily in **R**.
 
-Use `data.table` as the default framework for:
+For routine tabular data manipulation, use `data.table` as the default framework.
 
-- reading and writing tabular data;
-- filtering rows;
-- selecting columns;
-- creating or modifying variables;
-- grouped summaries;
-- joins;
-- feature construction.
+The primary reference for data-manipulation syntax and preferred approaches is:
 
-Other packages may be used when they are appropriate to the statistical or computational task, but routine data manipulation should generally use `data.table`.
+```text
+STAT380_DATA_TABLE_GUIDE.md
+```
+
+When solving a data-manipulation problem, prefer the approaches documented in that guide over generic R alternatives.
+
+In particular, the course expects students to become familiar with core `data.table` tools such as:
+
+- `fread()`
+- `fwrite()`
+- `DT[i, j, by]`
+- `:=`
+- `.SD`
+- `.SDcols`
+- `.N`
+- `merge()`
+- `melt()`
+- `dcast()`
+- `rbindlist()`
+- `setorder()`
+- `setnames()`
+- `copy()`
+
+Do not default to generic base-R approaches such as `apply()` when a clear course-aligned `data.table` solution exists.
+
+Other packages may be used when appropriate to the statistical or computational task, but routine data manipulation should generally follow the `data.table` conventions documented for the course.
 
 Prefer clear, direct code over unnecessarily elaborate abstractions.
 
@@ -150,7 +169,7 @@ A reproducible project should make it possible to regenerate transformed data fr
 
 ## 6. Read and Write Data Explicitly
 
-For tabular data, prefer:
+For tabular data, prefer course-aligned `data.table` functions:
 
 ```r
 library(data.table)
@@ -173,51 +192,29 @@ File reads and writes should be visible in the code rather than hidden in manual
 
 ---
 
-## 7. Use `data.table` Directly
+## 7. Prefer Core `data.table` Operations for Data Work
 
-Prefer idiomatic `data.table` operations.
+When a task can be handled clearly with the core `data.table` toolkit, prefer that approach.
 
-### Filter rows
+Examples include:
 
-```r
-adults <- people[age >= 18]
+- use `merge()` for readable joins;
+- use `melt()` for wide-to-long reshaping;
+- use `dcast()` for long-to-wide reshaping;
+- use `rbindlist()` to combine multiple compatible tables by rows;
+- use `DT[i, j, by]` for filtering, selecting, summarizing, and grouping;
+- use `:=` for in-place column creation or modification;
+- use `.SD` and `.SDcols` for repeated operations across selected columns.
+
+Do not introduce a generic alternative merely because it is shorter or familiar.
+
+The goal is to reinforce the course's shared `data.table` vocabulary.
+
+For details and examples, consult:
+
+```text
+STAT380_DATA_TABLE_GUIDE.md
 ```
-
-### Select columns
-
-```r
-x <- DT[, .(age, income, region)]
-```
-
-### Create or modify a column
-
-```r
-DT[, age_squared := age^2]
-```
-
-### Grouped summaries
-
-```r
-summary_dt <- DT[
-  ,
-  .(
-    mean_income = mean(income, na.rm = TRUE),
-    n = .N
-  ),
-  by = region
-]
-```
-
-### Join data
-
-```r
-result <- left_table[
-  right_table,
-  on = "id"
-]
-```
-
-When multiple approaches would work, prefer the one that remains readable to another STAT 380 student.
 
 ---
 
