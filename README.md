@@ -384,3 +384,25 @@ Submitting work in a manner that violates the stated rules for an assignment or 
 Penn State welcomes students with disabilities into the University's educational programs. If you have a disability-related need for reasonable academic adjustments in this course, contact Student Disability Resources (SDR; formerly ODS) at 814-863-1807, 116 Boucke, http://equity.psu.edu/student-disability-resources.
 
 In order to receive consideration for course accommodations, you must contact SDR and provide documentation (see the guidelines at http://equity.psu.edu/student-disability-resources/guidelines).
+
+## AI-Assisted Grading
+
+Penn State AI Studio may be used to assist with portions of the grading process for project-based work in STAT 380.
+
+The primary use of AI will be **rubric verification of student-submitted code**. For example, AI Studio may be used to help identify whether a submission contains required project elements such as:
+
+- use of relative file paths;
+- an appropriate training/validation workflow;
+- a required statistical or machine-learning method;
+- reproducible code needed to generate project results;
+- other objective requirements specified in the project rubric.
+
+AI may also assist in locating the specific code or evidence relevant to a rubric criterion.
+
+The instructor establishes all grading rubrics, determines the academic importance and point value of each criterion, reviews AI-generated findings and supporting evidence, and retains responsibility for verifying and assigning final grades. AI is used as a tool to increase the amount and consistency of project work that can be reviewed, not to independently determine student achievement.
+
+This use of AI is intended to be **additive** to the grading process. It allows more aspects of student work and course learning objectives to be evaluated consistently than would otherwise be practical through manual code review alone.
+
+If you believe that an AI-assisted factual determination about your submitted work is incorrect, you may request a **manual review by the instructor**. Students will not be penalized for requesting such a review.
+
+Student work used in this process will be handled through Penn State-approved systems and in accordance with applicable University policies.
