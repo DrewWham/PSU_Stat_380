@@ -1,7 +1,7 @@
 #load in libraries
 library(data.table)
 library(caret)
-set.seed(21)
+set.seed(17)
 
 
 
